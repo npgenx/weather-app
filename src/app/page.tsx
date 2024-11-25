@@ -13,7 +13,7 @@ export default function Home() {
               <div>
                   <Image
                       className='light:invert'
-                      src='/vercel.svg'
+                      src='./vercel.svg'
                       alt='Vercel logomark'
                       width={200}
                       height={200}
