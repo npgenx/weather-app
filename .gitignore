@@ -20,6 +20,8 @@
 # production
 /build
 
+# quokka scratchpads 
+*/quokkas/
 # misc
 .DS_Store
 *.pem
