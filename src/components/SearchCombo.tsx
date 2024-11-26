@@ -19,9 +19,9 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from '@/components/ui/popover';
-import { getGeoLocation } from '@/actions'
+import { getGeoLocation } from '@/actions';
 
-// import { useWeatherContextUpdate } from '@/providers/weather-provider';
+import { useWeatherContextUpdate, CityInfoProps } from '@/providers/weather-provider';
 
 type GeoCityInfo = {
     id: number;
@@ -46,12 +46,11 @@ type GeoCityInfo = {
     admin4?: string;
 };
 
-
-
 export const SearchCombo = () => {
     const [open, setOpen] = useState(false);
     const [selected, setSelected] = useState('');
     const [cities, setCities] = useState<GeoCityInfo[]>([]);
+    const { setCity } = useWeatherContextUpdate();
 
     const getCities = async (query: string) => {
         const results = await getGeoLocation(query);
@@ -61,22 +60,27 @@ export const SearchCombo = () => {
 
     // const { setCity } = useWeatherContextUpdate();
 
-
-
     const getOptions = (list: GeoCityInfo[]) => {
-        const options: {id:number, label: string, value:object}[] = [];
-        (list.length > 0) && list.map((city:GeoCityInfo) => {
-           const label = `${city.name}, ${city?.admin4 || ''} ${
-               city?.admin3 || ''
-           } ${city?.admin2 || ''} ${city?.admin1 || ''} (${
-               city.country_code
-           })`;
-            options.push({
-                id: city.id,
-                label: label.trim(),
-                value: { name: city.name,country:city.country, lat: city.latitude, lon: city.longitude },
+        const options: { id: number; label: string; value: CityInfoProps }[] =
+            [];
+        list.length > 0 &&
+            list.map((city: GeoCityInfo) => {
+                const label = `${city.name}, ${city?.admin4 || ''} ${
+                    city?.admin3 || ''
+                } ${city?.admin2 || ''} ${city?.admin1 || ''} (${
+                    city.country_code
+                })`;
+                options.push({
+                    id: city.id,
+                    label: label.trim(),
+                    value: {
+                        name: city.name,
+                        country: city.country,
+                        lat: city.latitude,
+                        lon: city.longitude,
+                    },
+                });
             });
-        });
 
         return options;
     };
@@ -93,16 +97,17 @@ export const SearchCombo = () => {
                         variant='outline'
                         role='combobox'
                         aria-expanded={open}
-                        className='w-fit min-w-[10rem] justify-between'>
+                        className='w-fit min-w-[30rem] justify-between'>
                         {selected
                             ? options.find(
-                                  (option) => option.label === selected
+                                  (option) =>
+                                      JSON.stringify(option.value) === selected
                               )?.label
                             : 'Enter a Location...'}
                         <ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
                     </Button>
                 </PopoverTrigger>
-                <PopoverContent className='w-fit min-w-[20rem] p-0 '>
+                <PopoverContent className='w-fit min-w-[30rem] p-0 '>
                     <Command shouldFilter={false}>
                         <CommandInput
                             placeholder='Search Location...'
@@ -125,20 +130,18 @@ export const SearchCombo = () => {
                                                     : currentValue
                                             );
 
-                                            // setCity({
-                                            //     name: currentValue,
-                                            //     coords: city.value,
-                                            // });
                                             console.log(
-                                                `|+|+ the current value is : `,
-                                                option
+                                                `+++THe Value is :${typeof option.value}|`,
+                                                option.value
                                             );
+                                            setCity(option.value);
                                             setOpen(false);
                                         }}>
                                         <Check
                                             className={cn(
                                                 'mr-2 h-4 w-4',
-                                                selected === option.label
+                                                selected ===
+                                                    JSON.stringify(option.value)
                                                     ? 'opacity-100'
                                                     : 'opacity-0'
                                             )}
@@ -153,5 +156,4 @@ export const SearchCombo = () => {
             </Popover>
         </main>
     );
-    
 };
