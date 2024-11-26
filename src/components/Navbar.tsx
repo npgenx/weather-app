@@ -1,8 +1,9 @@
 
-import { NavigationIcon } from 'lucide-react';
 import { ModeToggle } from '@/components/ModeToggle';
 import { SearchCombo } from '@/components/SearchCombo';
 import { useWeatherContext } from '@/providers/weather-provider';
+
+import { NavigationIcon } from 'lucide-react';
 
 
 const Navbar = () => {

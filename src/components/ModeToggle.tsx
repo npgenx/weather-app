@@ -1,7 +1,8 @@
 'use client';
-import { useState } from 'react';
-import { Moon, Sun, MonitorCog } from 'lucide-react';
+import { MonitorCog, Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
+import { useState } from 'react';
+
 
 import { Button } from '@/components/ui/button';
 

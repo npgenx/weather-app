@@ -1,10 +1,10 @@
 /* eslint-disable */
 'use client';
 
-import { useContext, useState } from 'react';
 import { Check, ChevronsUpDown } from 'lucide-react';
+import { useState } from 'react';
 
-import { cn, debounce } from '@/lib/utils';
+import { getGeoLocation } from '@/actions';
 import { Button } from '@/components/ui/button';
 import {
     Command,
@@ -19,9 +19,9 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from '@/components/ui/popover';
-import { getGeoLocation } from '@/actions';
+import { cn, debounce } from '@/lib/utils';
 
-import { useWeatherContextUpdate, CityInfoProps } from '@/providers/weather-provider';
+import { CityInfoProps, useWeatherContextUpdate } from '@/providers/weather-provider';
 
 type GeoCityInfo = {
     id: number;

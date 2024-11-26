@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import { WeatherContextProvider } from '@/providers/weather-provider';
+import { ThemeProvider as NextThemesProvider } from 'next-themes';
+import { useEffect, useState } from 'react';
 
 export const ThemeProvider = ({
     children,

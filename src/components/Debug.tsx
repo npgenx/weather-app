@@ -1,6 +1,7 @@
 'use client';
 
 import { useWeatherContext } from '@/providers/weather-provider';
+
 const MyDebuggerData = () => {
     const {  city } = useWeatherContext();
 

@@ -1,7 +1,7 @@
 'use client';
-
 import MyDebuggerData from '@/components/Debug';
 import Navbar from '@/components/Navbar';
+
 
 export default function Home() {
     const isDev = process.env.NODE_ENV === 'development';
