@@ -6,8 +6,9 @@ import Pressure from '@/components/Pressure';
 import SevenDayForecast from '@/components/SevenDayForecast';
 import UVIndex from '@/components/UVIndex';
 import WeatherMap from '@/components/WeatherMap';
-import WindInfo from '@/components/Wind';
+import WindInfo from '@/components/WindInfo';
 import React from 'react';
+import {NoSsr} from '@/components/NoSSR';
 
 const WeatherWindow = () => {
     return (
@@ -18,11 +19,10 @@ const WeatherWindow = () => {
             <AirQuality />
             <WindInfo />
             <HumidityInfo />
-            <UVIndex/>
+            <UVIndex />
 
-           <Pressure/>
-<WeatherMap/>
-
+            <Pressure />
+            <WeatherMap />
         </main>
     );
 };

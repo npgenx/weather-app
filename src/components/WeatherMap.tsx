@@ -1,18 +1,99 @@
-import {
-    Card,
+'use client';
 
-    CardHeader,
-    CardTitle,
-} from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 
-import React from 'react';
+import {useEffect} from 'react';
+import {MapContainer, TileLayer, useMap, LayersControl} from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+
+
+function FlyToActiveCity({activeCityCords}) {
+    const map = useMap();
+
+    useEffect(() => {
+        if (activeCityCords) {
+            const zoomLev = 13;
+            const flyToOptions = {
+                duration: 1.5,
+            };
+
+            map.flyTo(
+                [activeCityCords.lat, activeCityCords.lon],
+                zoomLev,
+                flyToOptions
+            );
+        }
+    }, [activeCityCords, map]);
+    return null;
+}
 
 const WeatherMap = () => {
+
+    const city = {
+        coords: [-118.2437,34.0522],
+    };
+
+
+    const {coords} = city;
+
+    const activeCityCords = {
+        lat: coords[1],
+        lon: coords[0],
+    };
+
     return (
-        <Card className='col-span-2 lg:col-span-8 lg:row-span-3'>
-            <CardHeader>
-                <CardTitle>Map</CardTitle>
-            </CardHeader>
+        <Card className='col-span-2 lg:col-span-8 lg:row-span-3 '>
+            <MapContainer
+                center={[activeCityCords.lat, activeCityCords.lon]}
+                zoom={13}
+                scrollWheelZoom={true}
+                className=' rounded-lg p-0 z-0 m-4'
+                style={{
+                    height: 'calc(100% - 2rem)',
+                    width: 'calc(100% - 2rem)',
+                }}>
+                <TileLayer
+                    url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                />
+
+                <LayersControl position='topright'>
+                    <LayersControl.BaseLayer name='Temperature'>
+                        <TileLayer
+                            url={`https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=85716d70713b33bf033f8a37df623121`}
+                            attribution='&copy; <a href="https://openweathermap.org/">OpenWeatherMap</a>'
+                        />
+                    </LayersControl.BaseLayer>
+                    <LayersControl.BaseLayer name='Precipitation'>
+                        <TileLayer
+                            url={`https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=85716d70713b33bf033f8a37df623121`}
+                            attribution='&copy; <a href="https://openweathermap.org/">OpenWeatherMap</a>'
+                        />
+                    </LayersControl.BaseLayer>
+                    <LayersControl.BaseLayer name='Wind'>
+                        <TileLayer
+                            url={`https://tile.openweathermap.org/map/wind_new/{z}/{x}/{y}.png?appid=85716d70713b33bf033f8a37df623121`}
+                            attribution='&copy; <a href="https://openweathermap.org/">OpenWeatherMap</a>'
+                        />
+                    </LayersControl.BaseLayer>
+                    <LayersControl.BaseLayer name='Clouds'>
+                        <TileLayer
+                            url={`https://tile.openweathermap.org/map/clouds_new/{z}/{x}/{y}.png?appid=85716d70713b33bf033f8a37df623121`}
+                            attribution='&copy; <a href="https://openweathermap.org/">OpenWeatherMap</a>'
+                        />
+                    </LayersControl.BaseLayer>
+                    <LayersControl.BaseLayer
+                        name='Clear Map'
+                        checked='Clear Map'>
+                        <TileLayer
+                            url={`https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png`}
+                            attribution='&copy; <a href="https://openweathermap.org/">OpenWeatherMap</a>'
+                        />
+                    </LayersControl.BaseLayer>
+                </LayersControl>
+
+                <FlyToActiveCity activeCityCords={activeCityCords} />
+            </MapContainer>
         </Card>
     );
 };
