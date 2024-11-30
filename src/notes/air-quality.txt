@@ -1,0 +1,6 @@
+0-50 (good),                                        10% green
+51-100 (moderate),                                  20% yellow
+101-150 (unhealthy for sensitive groups),           30% orange
+151-200 (unhealthy),                                40% red
+201-300 (very unhealthy)                            60% Purple
+301-500 (hazardous).                                Maroon/Brown

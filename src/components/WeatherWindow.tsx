@@ -1,7 +1,7 @@
 import AirQuality from '@/components/AirQuality';
 import CurrentTemp from '@/components/CurrentTemp';
 import HourlyForecast from '@/components/HourlyForecast';
-import Humidity from '@/components/Humidity';
+import HumidityInfo from '@/components/HumidityInfo';
 import Pressure from '@/components/Pressure';
 import SevenDayForecast from '@/components/SevenDayForecast';
 import UVIndex from '@/components/UVIndex';
@@ -17,7 +17,7 @@ const WeatherWindow = () => {
             <SevenDayForecast />
             <AirQuality />
             <WindInfo />
-            <Humidity />
+            <HumidityInfo />
             <UVIndex/>
 
            <Pressure/>

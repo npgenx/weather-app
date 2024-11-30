@@ -9,7 +9,7 @@ import {Droplets} from 'lucide-react';
 
 import React from 'react';
 
-const Humidity = () => {
+const HumidityInfo = () => {
     return (
         <Card className='col-span-2 flex flex-col'>
             <CardHeader>
@@ -28,4 +28,4 @@ const Humidity = () => {
     );
 };
 
-export default Humidity;
+export default HumidityInfo;

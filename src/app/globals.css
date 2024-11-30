@@ -72,3 +72,36 @@ body {
 }
 
 
+.air-quality {
+
+  background: linear-gradient(
+    90deg,
+    green 0%,
+    yellow 20%,
+    orange 30%,
+    red 40%,
+    purple 60%,
+    brown 100%
+  );
+
+  border-radius: 999px;
+}
+
+.progress {
+
+  background: linear-gradient(
+    90deg,
+    rgb(97, 238, 95) 0%,
+    rgb(76, 216, 11) 20%,
+    rgb(227, 227, 104) 40%,
+    rgb(238, 202, 0) 60%,
+    rgb(241, 160, 28) 80%,
+    rgb(255, 0, 0) 100%
+  );
+  border-radius: 999px;
+}
+
+.temperature {
+  background-image: linear-gradient(to right, #00dfff 0%, #00f9ff 20%, yellow);
+}
+
