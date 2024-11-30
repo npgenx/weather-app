@@ -87,6 +87,20 @@ body {
   border-radius: 999px;
 }
 
+.uvindex {
+
+  background: linear-gradient(
+    90deg,
+    green 18%,
+    yellow 45%,
+    orange 64%,
+    red 90%,
+    purple 100%
+  );
+
+  border-radius: 999px;
+}
+
 .progress {
 
   background: linear-gradient(

@@ -1,6 +1,16 @@
+air quality 
+
 0-50 (good),                                        10% green
 51-100 (moderate),                                  20% yellow
 101-150 (unhealthy for sensitive groups),           30% orange
 151-200 (unhealthy),                                40% red
 201-300 (very unhealthy)                            60% Purple
 301-500 (hazardous).                                Maroon/Brown
+
+UV Index
+
+0-2     Low             18% green    
+3-5     Moderate        45% yellow
+6-7     High            64% Orange
+8-10    Very High       90% red
+11+     Extreme         Purple

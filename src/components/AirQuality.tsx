@@ -1,6 +1,7 @@
 import {
     Card,
     CardContent,
+    CardDescription,
     CardFooter,
     CardHeader,
     CardTitle,
@@ -16,8 +17,9 @@ const AirQuality = () => {
                     <Flame />
                     Air Quality
                 </CardTitle>
+                <CardDescription>Moderate</CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className='grow content-center'>
                 <Slider
                     value={[101]}
                     min={0}
