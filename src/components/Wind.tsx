@@ -1,27 +1,30 @@
 import {
     Card,
     CardContent,
-    CardDescription,
     CardFooter,
     CardHeader,
     CardTitle,
 } from '@/components/ui/card';
+import Compass from '@/components/ui/compass';
+
+import { WindIcon } from 'lucide-react';
 
 import React from 'react';
 
-const Wind = () => {
+const WindInfo = () => {
     return (
-        <Card className='col-span-2'>
+        <Card className='col-span-2 center'>
             <CardHeader>
-                <CardTitle>Wind (speed, dir, gust)</CardTitle>
-                <CardDescription>Card Description</CardDescription>
+                <CardTitle className='flex items-center gap-3'>
+                    <WindIcon /> Wind Info
+                </CardTitle>
             </CardHeader>
-            <CardContent>Card Content</CardContent>
-            <CardFooter>
-                <p>Card Footer</p>
-            </CardFooter>
+            <CardContent className='flex justify-center gap-2'>
+                <Compass speed={3.9} deg={235} />
+            </CardContent>
+            <CardFooter>Wind gust are: 5 mph</CardFooter>
         </Card>
     );
 };
 
-export default Wind;
+export default WindInfo;
