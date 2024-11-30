@@ -21,7 +21,7 @@ const HumidityInfo = () => {
             <CardContent className='flex grow items-center justify-center'>
                 <p className='text-5xl font-bold'>55%</p>
             </CardContent>
-            <CardFooter className=''>
+            <CardFooter>
                 <p>Dry: May cause skin irritation</p>
             </CardFooter>
         </Card>

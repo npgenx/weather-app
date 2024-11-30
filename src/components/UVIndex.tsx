@@ -8,12 +8,15 @@ import {
     CardHeader,
     CardTitle,
 } from '@/components/ui/card';
+import { SunIcon } from 'lucide-react';
 
 const UVINdex = () => {
     return (
         <Card className='col-span-2 flex flex-col'>
             <CardHeader>
-                <CardTitle>UV Index</CardTitle>
+                <CardTitle className='flex items-center gap-3'>
+                    <SunIcon/>UV Index
+                </CardTitle>
                 <CardDescription>{'High'}</CardDescription>
             </CardHeader>
             <CardContent className='grow content-center'>
@@ -26,12 +29,14 @@ const UVINdex = () => {
                 />
             </CardContent>
             <CardFooter>
-                <em className='place-item-end font-thin text-sm'>More info: 
+                <em className='place-item-end font-thin text-sm'>
+                    More info:
                     <a
                         href='https://19january2017snapshot.epa.gov/sunsafety/uv-index-scale-1_.html'
                         target='blank'
-                    className='text-blue-700 '>
-                        {' '}UV Index Scale
+                        className='text-blue-700 '>
+                        {' '}
+                        UV Index Scale
                     </a>
                 </em>
             </CardFooter>
