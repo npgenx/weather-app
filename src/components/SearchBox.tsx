@@ -31,11 +31,11 @@ export const SeachBox = () => {
         setCities(results);
     };
 
-    const getOptions = (list: GeoCityInfoProps[]) => {
+    const getOptions = (list: GeoCityInfoProps[] = []) => {
         const cityList: {id: number; label: string; value: CityInfoProps}[] =
             [];
 
-        list.map((city: GeoCityInfoProps) => {
+            list.map((city: GeoCityInfoProps) => {
             const label = `${city.name}, ${city?.admin4 || ''} ${
                 city?.admin3 || ''
             } ${city?.admin2 || ''} ${city?.admin1 || ''} (${
