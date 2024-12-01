@@ -84,7 +84,6 @@ export const SeachBox = () => {
                         className='h-9'
                         onValueChange={value => {
                             debouncedHandleInput(value);
-                            // console.log('value is ', value)
                         }}
                     />
                     <CommandList>
