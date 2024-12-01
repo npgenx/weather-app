@@ -15,7 +15,10 @@ const DayForecast = ({
     return (
         <div className='daily-forevast py-4 flex flex-col justify-evenly border-b-2'>
             <p className='text-xl min-w-[3.5rem] flex gap-4 items-center justify-between'>
-                <span className=''>{getLocalDayDate(time)} </span>
+                <span className='text-base font-bold'>{getLocalDayDate(time)} </span>
+                <span className='text-base -ml-5'>
+                    {WMO[weather_code].text}
+                </span>
                 <Image
                     src={`./images/${WMO[weather_code].icon}d@2x.png`}
                     alt='weather'
