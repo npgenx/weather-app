@@ -110,7 +110,7 @@ export const WeatherContextProvider = ({children}: contextProps) => {
             };
         }
 
-        for (let i = 0; i < weather.hourly?.time?.length; i++) {
+        for (let i = 0; i < weather.daily?.time?.length; i++) {
             dailyWeather[i] = {
                 time: weather.daily.time[i],
                 weather_code: parseFloat(weather.daily.weather_code[i]),
@@ -130,7 +130,7 @@ export const WeatherContextProvider = ({children}: contextProps) => {
         uvData = rawUVData.current;
     }
 
-    
+
     return (
         <WeatherContext.Provider
             value={{
