@@ -80,10 +80,12 @@ export interface IWeatherInfo {
 }
 
 export interface IDailyWeather {
-    time: string[];
-    weather_code: number[];
-    temperature_2m_max: number[];
-    temperature_2m_min: number[];
+    time: string;
+    weather_code: number;
+    temperature_2m_max: number;
+    temperature_2m_min: number;
+    sunrise: string;
+    sunset: string
 }
 
 export interface IDailyWeatherUnits {
@@ -94,9 +96,9 @@ export interface IDailyWeatherUnits {
 }
 
 export interface IHourlyWeather {
-    time: string[];
-    temperature_2m: number[];
-    weather_code: number[];
+    time: string;
+    temperature_2m: number;
+    weather_code: number;
 }
 
 export interface IHourlyWeatherUnits {
