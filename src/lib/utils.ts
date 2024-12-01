@@ -29,7 +29,7 @@ export const debounce = <T extends (...args: never[]) => unknown>(
 
 
 export const getLocalTime = (time: string): string => { 
-    return dayjs(time).format('hh:mm a');
+    return dayjs(time).format('h:mm a');
 }
 
 export const getLocalDay = (time: string): string => {
