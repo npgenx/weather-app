@@ -29,15 +29,13 @@ const UVIndex = () => {
 
     
     if(!uvData) return (
-        <Card className='col-span-2 flex flex-col center'>
+        <Card className='col-span-2 flex flex-col items-center justify-center '>
             <span className='loader' />
         </Card>
     );
 
      
     return (
-        
-
         <Card className='col-span-2 flex flex-col'>
             <CardHeader>
                 <CardTitle className='flex items-center gap-3'>
@@ -59,7 +57,7 @@ const UVIndex = () => {
                 <em className='place-item-end font-thin text-sm'>
                     More info:
                     <a
-                        href='https://19january2017snapshot.epa.gov/sunsafety/uv-index-scale-1_.html'
+                        href='https://www.epa.gov/sunsafety/uv-index-scale-0'
                         target='blank'
                         className='text-blue-700 '>
                         {' '}

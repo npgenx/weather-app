@@ -1,3 +1,5 @@
+'use client';
+
 import {
     Card,
     CardContent,
@@ -6,10 +8,40 @@ import {
     CardHeader,
     CardTitle,
 } from '@/components/ui/card';
-import { Flame } from 'lucide-react';
-import { Slider } from './ui/slider';
+import {Flame} from 'lucide-react';
+import {Slider} from './ui/slider';
+import {useWeatherContext} from '@/providers/weather-provider';
 
 const AirQuality = () => {
+    const {uvData} = useWeatherContext();
+
+    const uvText = (uv_index: number) => {
+        if (uv_index > 300) return `Hazardous (${uv_index})`;
+        if (uv_index > 200) return `Very Unhealthy (${uv_index})`;
+        if (uv_index > 150) return `Unhealthy (${uv_index})`;
+        if (uv_index > 100)
+            return `Unhealthy for sensitive people (${uv_index})`;
+        if (uv_index > 50) return ` Moderate (${uv_index})`;
+        return `Good (${uv_index})`;
+    };
+
+    if (!uvData)
+        return (
+            <Card className='col-span-2 flex flex-col items-center justify-center '>
+                <span className='loader' />
+            </Card>
+        );
+    
+    const {
+        us_aqi,
+        carbon_monoxide,
+        pm10,
+        pm2_5,
+        nitrogen_dioxide,
+        sulphur_dioxide,
+        ozone,
+    } = uvData;
+
     return (
         <Card className='col-span-4 row-start-2 col-start-4'>
             <CardHeader>
@@ -17,7 +49,7 @@ const AirQuality = () => {
                     <Flame />
                     Air Quality
                 </CardTitle>
-                <CardDescription>Moderate</CardDescription>
+                <CardDescription>{uvText(us_aqi)}</CardDescription>
             </CardHeader>
             <CardContent className='grow content-center'>
                 <Slider
@@ -30,22 +62,22 @@ const AirQuality = () => {
             </CardContent>
             <CardFooter>
                 <span>
-                    SO<sub>2</sub>: <b>{100}</b>
+                    SO<sub>2</sub>: <b>{sulphur_dioxide}</b>
                 </span>
                 <span>
-                    NO<sub>2</sub>: <b>{200}</b>
+                    NO<sub>2</sub>: <b>{nitrogen_dioxide}</b>
                 </span>
                 <span>
-                    PM<sub>10</sub>: <b>{250}</b>
+                    PM<sub>10</sub>: <b>{pm10}</b>
                 </span>
                 <span>
-                    PM<sub>2.5</sub>: <b>{200}</b>
+                    PM<sub>2.5</sub>: <b>{pm2_5}</b>
                 </span>
                 <span>
-                    O<sub>3</sub>: <b>{150}</b>
+                    O<sub>3</sub>: <b>{ozone}</b>
                 </span>
                 <span>
-                    CO: <b>{120}</b>
+                    CO: <b>{carbon_monoxide}</b>
                 </span>
 
                 <em className='place-item-end font-thin text-sm'>

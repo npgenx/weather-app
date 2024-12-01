@@ -1,3 +1,5 @@
+'use client';
+
 import {
     Card,
     CardContent,
@@ -7,9 +9,21 @@ import {
 } from '@/components/ui/card';
 import {Droplets} from 'lucide-react';
 
-import React from 'react';
+import { useWeatherContext } from '@/providers/weather-provider';
+
+
 
 const HumidityInfo = () => {
+
+    const {currentWeather} = useWeatherContext();
+
+    if (!currentWeather)
+        return (
+            <Card className='col-span-2 flex flex-col items-center justify-center '>
+                <span className='loader' />
+            </Card>
+        );
+
     return (
         <Card className='col-span-2 flex flex-col'>
             <CardHeader>
@@ -19,10 +33,10 @@ const HumidityInfo = () => {
                 </CardTitle>
             </CardHeader>
             <CardContent className='flex grow items-center justify-center'>
-                <p className='text-5xl font-bold'>55%</p>
+                <p className='text-5xl font-bold'>{currentWeather?.relative_humidity_2m}%</p>
             </CardContent>
             <CardFooter>
-                <p>Dry: May cause skin irritation</p>
+                <em>{'Todo: heat index' }</em>
             </CardFooter>
         </Card>
     );
