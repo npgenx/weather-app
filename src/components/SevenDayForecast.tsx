@@ -2,16 +2,13 @@ import {Card, CardContent, CardHeader, CardTitle} from '@/components/ui/card';
 import Image from 'next/image';
 
 const DayForecast = ({
-   
     day = 'Monday',
     temp_max = 105,
     temp_min = -15,
-    weathercode = '04'}
-) => {
-    
+    weathercode = '04',
+}) => {
     return (
-        <div
-            className='daily-forevast py-4 flex flex-col justify-evenly border-b-2'>
+        <div className='daily-forevast py-4 flex flex-col justify-evenly border-b-2'>
             <p className='text-xl min-w-[3.5rem] flex flex-row gap-4 items-center'>
                 <span> {day} </span>
                 <Image
@@ -38,9 +35,8 @@ const SevenDayForecast = () => {
                 <CardTitle>{7} Day Forecast </CardTitle>
             </CardHeader>
             <CardContent>
-                {Array.from({ length: 7 }).map((data, index) => { 
-                    console.log(`the data is ${typeof data}:  the index is: ${index}`);
-                    return <DayForecast data={data} key={index} />;
+                {Array.from({length: 7}).map((data, index) => {
+                    return <DayForecast {...data} key={index} />;
                 })}
             </CardContent>
         </Card>

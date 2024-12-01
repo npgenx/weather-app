@@ -2,6 +2,7 @@
 
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import { useEffect, useState } from 'react';
+import {WeatherContextProvider} from '@/providers/weather-provider';
 
 export const ThemeProvider = ({
     children,
@@ -17,7 +18,7 @@ export const ThemeProvider = ({
 
     return (
         <NextThemesProvider {...props}>
-            {children}
+            <WeatherContextProvider>{children}</WeatherContextProvider>{' '}
         </NextThemesProvider>
     );
 };
