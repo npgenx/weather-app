@@ -56,7 +56,7 @@ export const SeachBox = () => {
         return cityList;
     };
 
-    const options = getOptions(cities);
+    const locationOptions = getOptions(cities);
 
     const debouncedHandleInput = debounce(getCities, 300);
     return (
@@ -66,9 +66,9 @@ export const SeachBox = () => {
                     variant='outline'
                     role='combobox'
                     aria-expanded={open}
-                    className='w-[200px] justify-between'>
+                    className='w-fit min-w-[30rem] justify-between'>
                     {selected
-                        ? options.find(
+                        ? locationOptions.find(
                               option =>
                                   JSON.stringify(option.value) === selected
                           )?.label
@@ -76,7 +76,7 @@ export const SeachBox = () => {
                     <ChevronsUpDown className='opacity-50' />
                 </Button>
             </PopoverTrigger>
-            <PopoverContent className='w-[200px] p-0'>
+            <PopoverContent className='w-fit min-w-[30rem] p-0 '>
                 <Command shouldFilter={false}>
                     <CommandInput
                         placeholder='Search Location...'
@@ -89,7 +89,7 @@ export const SeachBox = () => {
                     <CommandList>
                         <CommandEmpty>No locations found.</CommandEmpty>
                         <CommandGroup>
-                            {options.map(option => (
+                            {locationOptions.map(option => (
                                 <CommandItem
                                     key={option.id}
                                     value={JSON.stringify(option.value)}
@@ -100,19 +100,20 @@ export const SeachBox = () => {
                                                 : currentValue
                                         );
 
-                                        console.log('\=\=\ Selected :', option)
+                                        console.log('== Selected :', option);
                                         setCity(option.value);
                                         setOpen(false);
                                     }}>
                                     <Check
                                         className={cn(
-                                            'ml-auto',
+                                            'mr-2 h-4 w-4',
                                             selected ===
                                                 JSON.stringify(option.value)
                                                 ? 'opacity-100'
                                                 : 'opacity-0'
                                         )}
                                     />
+                                    {option.label}
                                 </CommandItem>
                             ))}
                         </CommandGroup>
