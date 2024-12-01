@@ -9,6 +9,7 @@ import {
     ReactNode,
     useContext,
     useState,
+    useEffect,
 } from 'react';
 
 type WeatherContext = {
@@ -35,6 +36,14 @@ export type contextProps = {
 
 export const WeatherContextProvider = ({children}: contextProps) => {
     const [city, setCity] = useState<CityInfoProps>(initialCity);
+
+
+
+    useEffect(() => {
+      console.log(`The city was updated to ${city.name}. full details :`, city)
+
+    }, [city])
+    
 
 
     return (

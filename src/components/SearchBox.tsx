@@ -19,7 +19,6 @@ import {cn, debounce} from '@/lib/utils';
 import {useWeatherContextUpdate} from '@/providers/weather-provider';
 import {CityInfoProps, GeoCityInfo} from '@/shared.types';
 
-
 export const SeachBox = () => {
     const [open, setOpen] = useState(false);
     const [selected, setSelected] = useState('');
@@ -31,27 +30,28 @@ export const SeachBox = () => {
         setCities(results);
     };
 
-    const getOptions = (list: GeoCityInfo[]) => {
-        const cityList: { id: number; label: string; value: CityInfoProps }[] = [];
-        
-            list.map((city: GeoCityInfo) => {
-                const label = `${city.name}, ${city?.admin4 || ''} ${
-                    city?.admin3 || ''
-                } ${city?.admin2 || ''} ${city?.admin1 || ''} (${
-                    city.country_code
-                })`;
-                cityList.push({
-                    id: city.id,
-                    label: label.trim(),
-                    value: {
-                        name: city.name,
-                        country: city.country,
-                        tzone: city.timezone,
-                        latitude: city.latitude,
-                        longitude: city.longitude,
-                    },
-                });
+    const getOptions = (list: GeoCityInfo[] = []) => {
+        const cityList: {id: number; label: string; value: CityInfoProps}[] =
+            [];
+
+        list.map((city: GeoCityInfo) => {
+            const label = `${city.name}, ${city?.admin4 || ''} ${
+                city?.admin3 || ''
+            } ${city?.admin2 || ''} ${city?.admin1 || ''} (${
+                city.country_code
+            })`;
+            cityList.push({
+                id: city.id,
+                label: label.trim(),
+                value: {
+                    name: city.name,
+                    country: city.country,
+                    tzone: city.timezone,
+                    latitude: city.latitude,
+                    longitude: city.longitude,
+                },
             });
+        });
 
         return cityList;
     };
@@ -100,7 +100,6 @@ export const SeachBox = () => {
                                                 : currentValue
                                         );
 
-                                        console.log('== Selected :', option);
                                         setCity(option.value);
                                         setOpen(false);
                                     }}>

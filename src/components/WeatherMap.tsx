@@ -6,13 +6,15 @@ import {useEffect} from 'react';
 import {MapContainer, TileLayer, useMap, LayersControl} from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
+import { useWeatherContext } from '@/providers/weather-provider';
+
 
 function FlyToActiveCity({activeCityCords}) {
     const map = useMap();
 
     useEffect(() => {
         if (activeCityCords) {
-            const zoomLev = 13;
+            const zoomLev = 9;
             const flyToOptions = {
                 duration: 1.5,
             };
@@ -33,19 +35,19 @@ const WeatherMap = () => {
         coords: [-118.2437,34.0522],
     };
 
+    const { city: { latitude, longitude} } = useWeatherContext()
 
-    const {coords} = city;
 
     const activeCityCords = {
-        lat: coords[1],
-        lon: coords[0],
+        lat: latitude,
+        lon: longitude,
     };
 
     return (
         <Card className='col-span-2 lg:col-span-8 lg:row-span-3 '>
             <MapContainer
                 center={[activeCityCords.lat, activeCityCords.lon]}
-                zoom={13}
+                zoom={9}
                 scrollWheelZoom={true}
                 className=' rounded-lg p-0 z-0 m-4'
                 style={{
