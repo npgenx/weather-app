@@ -1,10 +1,6 @@
 'use client';
 
-import dayjs from 'dayjs';
-import timezone from 'dayjs/plugin/timezone'
-import utc from 'dayjs/plugin/utc'
-dayjs.extend(utc);
-dayjs.extend(timezone);
+
 
 import Image from 'next/image';
 import {
@@ -19,6 +15,7 @@ import {SunriseIcon, SunsetIcon} from 'lucide-react';
 
 import {useWeatherContext} from '@/providers/weather-provider';
 import { WMO } from '@/lib/constants';
+import { getLocalTime } from '@/lib/utils';
 
 const CTSkeleton = () => {
     return (
@@ -72,13 +69,15 @@ const CurrentTemp = () => {
                     <span className='flex gap-2 items-center'>
                         <SunriseIcon />
                         <p className='pt-1 '>
-                            {dayjs(dailyWeather[0]?.sunrise).format('hh:mm a')}
+                            {getLocalTime(dailyWeather[0]?.sunrise)}
                         </p>
                     </span>
 
                     <span className='flex gap-2 items-center'>
                         <SunsetIcon />
-                        <p className='pt-1 '>{dayjs(dailyWeather[0]?.sunset).format('hh:mm a')}</p>
+                        <p className='pt-1 '>
+                            {getLocalTime(dailyWeather[0]?.sunset)}
+                        </p>
                     </span>
                 </div>
             </CardFooter>

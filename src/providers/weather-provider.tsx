@@ -67,17 +67,17 @@ export const WeatherContextProvider = ({children}: contextProps) => {
     }, [city]);
 
     const currentWeather = weather?.current;
-    let dailyWeather: Array<IDailyWeather> = [
-        {
-            time: 'now',
-            weather_code: 0,
-            temperature_2m_max: 200,
-            temperature_2m_min: -200,
-            sunset: '0000',
-            sunrise: '0000'
-        },
-    ];
-
+    // let dailyWeather: Array<IDailyWeather> = [
+    //     {
+    //         time: 'now',
+    //         weather_code: 0,
+    //         temperature_2m_max: 200,
+    //         temperature_2m_min: -200,
+    //         sunset: '0000',
+    //         sunrise: '0000'
+    //     },
+    // ];
+    let dailyWeather: Array<IDailyWeather>;
     let hourlyWeather: Array<IHourlyWeather> = [
         {
             time: 'now',
@@ -102,6 +102,7 @@ export const WeatherContextProvider = ({children}: contextProps) => {
 
 
     if (weather) {
+        dailyWeather = [];
         for (let i = 0; i < weather.hourly?.time?.length; i++) {
             hourlyWeather[i] = {
                 time: weather.hourly.time[i].toString(),
