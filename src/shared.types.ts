@@ -135,44 +135,42 @@ export interface ICurrentWeatherUnits {
 
 
 /// JSON to types converter
-export interface IUVIndexInfo {
-    latitude: number;
-    longitude: number;
-    generationtime_ms: number;
-    utc_offset_seconds: number;
-    timezone: string;
-    timezone_abbreviation: string;
-    elevation: number;
-    current_units: ICurrentUVUnits;
-    current: ICurrentUV;
+export interface IAirPollution {
+  latitude: number;
+  longitude: number;
+  generationtime_ms: number;
+  utc_offset_seconds: number;
+  timezone: string;
+  timezone_abbreviation: string;
+  elevation: number;
+  current_units: IAPCurrentunits;
+  current: IAPCurrent;
 }
 
-export interface ICurrentUV {
-    time: string;
-    interval: number;
-    us_aqi: number;
-    pm10: number;
-    pm2_5: number;
-    carbon_monoxide: number;
-    nitrogen_dioxide: number;
-    sulphur_dioxide: number;
-    ozone: number;
-    dust: number;
-    uv_index: number;
-    uv_index_clear_sky: number;
+export interface IAPCurrent {
+  time: string;
+  interval: number;
+  us_aqi: number;
+  pm10: number;
+  pm2_5: number;
+  carbon_monoxide: number;
+  nitrogen_dioxide: number;
+  sulphur_dioxide: number;
+  ozone: number;
+  uv_index: number;
+  uv_index_clear_sky: number;
 }
 
-export interface ICurrentUVUnits {
-    time: string;
-    interval: string;
-    us_aqi: string;
-    pm10: string;
-    pm2_5: string;
-    carbon_monoxide: string;
-    nitrogen_dioxide: string;
-    sulphur_dioxide: string;
-    ozone: string;
-    dust: string;
-    uv_index: string;
-    uv_index_clear_sky: string;
+export interface IAPCurrentunits {
+  time: string;
+  interval: string;
+  us_aqi: string;
+  pm10: string;
+  pm2_5: string;
+  carbon_monoxide: string;
+  nitrogen_dioxide: string;
+  sulphur_dioxide: string;
+  ozone: string;
+  uv_index: string;
+  uv_index_clear_sky: string;
 }

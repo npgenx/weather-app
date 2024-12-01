@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import {Slider} from './ui/slider';
 import {
@@ -10,18 +12,43 @@ import {
 } from '@/components/ui/card';
 import { SunIcon } from 'lucide-react';
 
-const UVINdex = () => {
+import {useWeatherContext} from '@/providers/weather-provider';
+
+const UVIndex = () => {
+
+    const { uvData } = useWeatherContext();
+
+    const uvText = (aqi: number) => {
+        
+        if (aqi >= 11) return `Extreme (${aqi})`;
+        if (aqi >= 8) return ` Very High (${aqi})`;
+        if (aqi >= 6) return ` Very High (${aqi})`;
+        if (aqi >= 3) return ` Very High (${aqi})`;
+        return `Low (${aqi})`;
+    }
+
+    
+    if(!uvData) return (
+        <Card className='col-span-2 flex flex-col'>
+            <span className='loader' />
+        </Card>
+    );
+
+     
     return (
+        
+
         <Card className='col-span-2 flex flex-col'>
             <CardHeader>
                 <CardTitle className='flex items-center gap-3'>
-                    <SunIcon/>UV Index
+                    <SunIcon />
+                    UV Index
                 </CardTitle>
-                <CardDescription>{'High'}</CardDescription>
+                <CardDescription>{uvText(uvData?.uv_index)}</CardDescription>
             </CardHeader>
             <CardContent className='grow content-center'>
                 <Slider
-                    value={[7]}
+                    value={[uvData?.uv_index]}
                     min={0}
                     max={11}
                     className='uvindex  h-3 '
@@ -44,4 +71,4 @@ const UVINdex = () => {
     );
 };
 
-export default UVINdex;
+export default UVIndex;

@@ -4,8 +4,8 @@ import {
     ICurrentWeather,
     IDailyWeather,
     IHourlyWeather,
-    IUVIndexInfo,
-    IWeatherInfo,
+    IAirPollution,
+    IWeatherInfo
 } from '@/shared.types';
 import {
     createContext,
@@ -18,12 +18,16 @@ import {
 } from 'react';
 
 import {getUVInfo, getWeatherInfo} from '@/actions';
+import { IAPCurrent } from '../shared.types';
+
+
 
 export interface WeatherContext {
     city: CityInfoProps;
     currentWeather?: ICurrentWeather;
-    dailyWeather?: Array<IDailyWeather >;
-    hourlyWeather?: Array<IHourlyWeather >;
+    dailyWeather?: Array<IDailyWeather>;
+    hourlyWeather?: Array<IHourlyWeather>;
+    uvData?: IAPCurrent;
 }
 
 export type WeatherContextUpdate = {
@@ -47,7 +51,7 @@ export type contextProps = {
 export const WeatherContextProvider = ({children}: contextProps) => {
     const [city, setCity] = useState<CityInfoProps>(initialCity);
     const [weather, setWeather] = useState<IWeatherInfo | null>(null);
-    const [uvdata, setUvdata] = useState<IUVIndexInfo | null>(null);
+    const [rawUVData, setRawUVData] = useState<IAirPollution | null>(null);
 
     const getRawLocationData = async (city: CityInfoProps) => {
         const {latitude, longitude, tzone} = city;
@@ -55,13 +59,12 @@ export const WeatherContextProvider = ({children}: contextProps) => {
         const datau = await getUVInfo(latitude, longitude, tzone);
 
         if (dataw) setWeather(dataw);
-        if (datau) setUvdata(datau);
+        if (datau) setRawUVData(datau);
     };
 
     useEffect(() => {
         getRawLocationData(city);
     }, [city]);
-    // Damn Typscript
 
     const currentWeather = weather?.current;
     let dailyWeather: Array<IDailyWeather> = [
@@ -82,8 +85,21 @@ export const WeatherContextProvider = ({children}: contextProps) => {
             weather_code: 0,
         },
     ];
+        let uvData: IAPCurrent = {
+            time: '',
+            interval: -9999,
+            us_aqi: -9999,
+            pm10: -9999,
+            pm2_5: -9999,
+            carbon_monoxide: -9999,
+            nitrogen_dioxide: -9999,
+            sulphur_dioxide: -9999,
+            ozone: -9999,
+            uv_index: -9999,
+            uv_index_clear_sky: -9999,
+        };
 
-    console.log(uvdata);
+
 
     if (weather) {
         for (let i = 0; i < weather.hourly?.time?.length; i++) {
@@ -110,6 +126,11 @@ export const WeatherContextProvider = ({children}: contextProps) => {
         }
     }
 
+    if (rawUVData) { 
+        uvData = rawUVData.current;
+    }
+
+    
     return (
         <WeatherContext.Provider
             value={{
@@ -117,6 +138,7 @@ export const WeatherContextProvider = ({children}: contextProps) => {
                 currentWeather,
                 dailyWeather,
                 hourlyWeather,
+                uvData
             }}>
             <WeatherContextUpdate.Provider value={{setCity}}>
                 {children}

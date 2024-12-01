@@ -1,3 +1,4 @@
+import UVIndex from '../components/UVIndex';
 export const WMO = 
     {
         '0': {text: 'Sunny', icon: '01'},
@@ -28,5 +29,6 @@ export const WMO =
         '95': {text: 'Thunderstorm', icon: '11'},
         '96': {text: 'Thunderstorm/Light Hail', icon: '11'},
         '99': {text: 'Thunderstorm/Heavy Hai;', icon: '11'},
-    };
+};
+    
 
