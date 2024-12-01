@@ -30,7 +30,7 @@ const CurrentTemp = () => {
 
     if (!currentWeather || !dailyWeather) return <CTSkeleton />;
     return (
-        <Card className='col-span-4 lg:col-span-3 lg:row-span-2 text-center '>
+        <Card className='col-span-4 lg:col-span-3 lg:row-span-2 text-center max-[400px]'>
             <CardHeader className='pb-1'>
                 <CardTitle className='text-7xl font-bold'>
                     {' '}
@@ -38,7 +38,7 @@ const CurrentTemp = () => {
                 </CardTitle>
                 <CardDescription>
                     Feels like{' '}
-                    {Math.round(currentWeather?.apparent_temperature)} °F
+                    {Math.round(currentWeather?.apparent_temperature)}°F
                 </CardDescription>
                 <p className='flex  font-bold pt-4 justify-around'>
                     <span>
@@ -56,15 +56,14 @@ const CurrentTemp = () => {
                         WMO[currentWeather.weather_code].icon
                     }d@2x.png`}
                     alt='weather'
-                    width={150}
-                    height={150}
-                />{' '}
-                <br />
+                    width={120}
+                    height={120}
+                />
                 <p className='font-bold'>
                     {WMO[currentWeather.weather_code].text}
                 </p>
             </CardContent>
-            <CardFooter>
+            <CardFooter className='pb-0'>
                 <div className='flex pt-10 justify-around gap-2 w-full'>
                     <span className='flex gap-2 items-center'>
                         <SunriseIcon />

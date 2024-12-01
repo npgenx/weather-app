@@ -25,7 +25,7 @@ const HumidityInfo = () => {
         );
 
     return (
-        <Card className='col-span-2 flex flex-col'>
+        <Card className='col-span-2 flex flex-col max-h-[200px]'>
             <CardHeader>
                 <CardTitle className='flex items-center gap-3'>
                     <Droplets />
@@ -33,10 +33,12 @@ const HumidityInfo = () => {
                 </CardTitle>
             </CardHeader>
             <CardContent className='flex grow items-center justify-center'>
-                <p className='text-5xl font-bold'>{currentWeather?.relative_humidity_2m}%</p>
+                <p className='text-5xl font-bold'>
+                    {currentWeather?.relative_humidity_2m}%
+                </p>
             </CardContent>
             <CardFooter>
-                <em>{'Todo: heat index' }</em>
+                <em>{'Todo: heat index'}</em>
             </CardFooter>
         </Card>
     );

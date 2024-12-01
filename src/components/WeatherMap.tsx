@@ -40,7 +40,7 @@ const WeatherMap = () => {
     };
 
     return (
-        <Card className='col-span-2 lg:col-span-8 lg:row-span-3 '>
+        <Card className='col-span-2 lg:col-span-8 lg:row-span-3 max-h-[400px]'>
             <MapContainer
                 //@ts-expect-error leaflet types are wrong
                 center={[activeCityCords.lat, activeCityCords.lon]}

@@ -16,7 +16,7 @@ const Pressure = () => {
                     </Card>
                 );   
     return (
-        <Card className='col-span-2 flex flex-col'>
+        <Card className='col-span-2 flex flex-col max-h-[200px]'>
             <CardHeader>
                 <CardTitle className='flex items-center gap-3'>
                     <Gauge />
@@ -24,7 +24,9 @@ const Pressure = () => {
                 </CardTitle>
             </CardHeader>
             <CardContent className='flex grow items-center justify-center'>
-                <p className='text-4xl font-bold'>{currentWeather?.surface_pressure} hPa</p>
+                <p className='text-4xl font-bold'>
+                    {currentWeather?.surface_pressure} hPa
+                </p>
             </CardContent>
         </Card>
     );

@@ -26,7 +26,7 @@ const WindInfo = () => {
     
     const {wind_direction_10m,  wind_gusts_10m, wind_speed_10m} = currentWeather
     return (
-        <Card className='col-span-2 center'>
+        <Card className='col-span-2 center max-h-[200px]'>
             <CardHeader>
                 <CardTitle className='flex items-center gap-3'>
                     <WindIcon /> Wind Info
@@ -35,7 +35,10 @@ const WindInfo = () => {
             <CardContent className='flex justify-center gap-2'>
                 <Compass speed={wind_speed_10m} deg={wind_direction_10m} />
             </CardContent>
-            <CardFooter>Wind gust are: {wind_gusts_10m} mph</CardFooter>
+            <CardFooter>
+                Wind gust are:
+                <span className='font-semibold pl-1'>{wind_gusts_10m} mph</span>
+            </CardFooter>
         </Card>
     );
 };

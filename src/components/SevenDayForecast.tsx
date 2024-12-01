@@ -13,7 +13,7 @@ const DayForecast = ({
     weather_code = '04',
 }) => {
     return (
-        <div className='daily-forevast py-4 flex flex-col justify-evenly border-b-2'>
+        <div className='daily-forecast py-4 flex flex-col justify-evenly border-b-2'>
             <p className='text-xl min-w-[3.5rem] flex gap-4 items-center justify-between'>
                 <span className='text-base font-bold'>{getLocalDayDate(time)} </span>
                 <span className='text-base -ml-5'>
@@ -49,7 +49,7 @@ const SevenDayForecast = () => {
 
     
     return (
-        <Card className=' col-span-3 row-start-3 row-span-3'>
+        <Card className=' col-span-3 row-start-3 row-span-3 max-h-[400px]  overflow-y-scroll'>
             <CardHeader>
                 <CardTitle>{7} Day Forecast </CardTitle>
             </CardHeader>
