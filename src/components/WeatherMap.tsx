@@ -12,10 +12,7 @@ const initialCoords = {lat: 34.0522, lon: -118.2437};
 
 const FlyToActiveCity = ({activeCityCords = initialCoords}) => {
     const map = useMap();
-    console.log(
-        `type of activeCityCords is ${typeof activeCityCords}`,
-        activeCityCords
-    );
+
     useEffect(() => {
         if (activeCityCords) {
             const zoomLev = 9;

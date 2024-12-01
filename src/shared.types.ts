@@ -31,7 +31,7 @@ export type hourlyWeatherProps = {
     weather_code: string,
 }
 
-export type dailyWeather = {
+export type dailyWeatherProps = {
     time: number;
     weather_code: number;
     temp_max: number;
@@ -40,7 +40,7 @@ export type dailyWeather = {
     sunset: number;
 };                
 
-export type GeoCityInfo = {
+export type GeoCityInfoProps = {
     id: number;
     name: string;
     latitude: number;
@@ -62,3 +62,115 @@ export type GeoCityInfo = {
     admin3?: string;
     admin4?: string;
 };
+
+export interface IWeatherInfo {
+    latitude: number;
+    longitude: number;
+    generationtime_ms: number;
+    utc_offset_seconds: number;
+    timezone: string;
+    timezone_abbreviation: string;
+    elevation: number;
+    current_units: ICurrentWeatherUnits;
+    current: ICurrentWeather;
+    hourly_units: IHourlyWeatherUnits;
+    hourly: IHourlyWeather;
+    daily_units: IDailyWeatherUnits;
+    daily: IDailyWeather;
+}
+
+export interface IDailyWeather {
+    time: string[];
+    weather_code: number[];
+    temperature_2m_max: number[];
+    temperature_2m_min: number[];
+}
+
+export interface IDailyWeatherUnits {
+    time: string;
+    weather_code: string;
+    temperature_2m_max: string;
+    temperature_2m_min: string;
+}
+
+export interface IHourlyWeather {
+    time: string[];
+    temperature_2m: number[];
+    weather_code: number[];
+}
+
+export interface IHourlyWeatherUnits {
+    time: string;
+    temperature_2m: string;
+    weather_code: string;
+}
+
+export interface ICurrentWeather {
+    time: string;
+    interval: number;
+    temperature_2m: number;
+    apparent_temperature: number;
+    is_day: number;
+    weather_code: number;
+    surface_pressure: number;
+    wind_speed_10m: number;
+    wind_direction_10m: number;
+    wind_gusts_10m: number;
+}
+
+export interface ICurrentWeatherUnits {
+    time: string;
+    interval: string;
+    temperature_2m: string;
+    apparent_temperature: string;
+    is_day: string;
+    weather_code: string;
+    surface_pressure: string;
+    wind_speed_10m: string;
+    wind_direction_10m: string;
+    wind_gusts_10m: string;
+}
+
+
+/// JSON to types converter
+export interface IUVIndexInfo {
+    latitude: number;
+    longitude: number;
+    generationtime_ms: number;
+    utc_offset_seconds: number;
+    timezone: string;
+    timezone_abbreviation: string;
+    elevation: number;
+    current_units: ICurrentUVUnits;
+    current: ICurrentUV;
+}
+
+export interface ICurrentUV {
+    time: string;
+    interval: number;
+    us_aqi: number;
+    pm10: number;
+    pm2_5: number;
+    carbon_monoxide: number;
+    nitrogen_dioxide: number;
+    sulphur_dioxide: number;
+    ozone: number;
+    dust: number;
+    uv_index: number;
+    uv_index_clear_sky: number;
+}
+
+export interface ICurrentUVUnits {
+    time: string;
+    interval: string;
+    us_aqi: string;
+    pm10: string;
+    pm2_5: string;
+    carbon_monoxide: string;
+    nitrogen_dioxide: string;
+    sulphur_dioxide: string;
+    ozone: string;
+    dust: string;
+    uv_index: string;
+    uv_index_clear_sky: string;
+}

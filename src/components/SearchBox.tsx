@@ -13,17 +13,17 @@ import {Popover, PopoverContent, PopoverTrigger} from '@/components/ui/popover';
 import {Check, ChevronsUpDown} from 'lucide-react';
 import {Button} from '@/components/ui/button';
 
-import {getGeoLocation} from '@/actions/getGeoLocation';
+import {getGeoLocation} from '@/actions';
 import {cn, debounce} from '@/lib/utils';
 
 import {useWeatherContextUpdate} from '@/providers/weather-provider';
-import {CityInfoProps, GeoCityInfo} from '@/shared.types';
+import {CityInfoProps, GeoCityInfoProps} from '@/shared.types';
 
 
 export const SeachBox = () => {
     const [open, setOpen] = useState(false);
     const [selected, setSelected] = useState('');
-    const [cities, setCities] = useState<GeoCityInfo[]>([]);
+    const [cities, setCities] = useState<GeoCityInfoProps[]>([]);
     const {setCity} = useWeatherContextUpdate();
 
     const getCities = async (query: string) => {
@@ -31,27 +31,28 @@ export const SeachBox = () => {
         setCities(results);
     };
 
-    const getOptions = (list: GeoCityInfo[]) => {
-        const cityList: { id: number; label: string; value: CityInfoProps }[] = [];
-        
-            list.map((city: GeoCityInfo) => {
-                const label = `${city.name}, ${city?.admin4 || ''} ${
-                    city?.admin3 || ''
-                } ${city?.admin2 || ''} ${city?.admin1 || ''} (${
-                    city.country_code
-                })`;
-                cityList.push({
-                    id: city.id,
-                    label: label.trim(),
-                    value: {
-                        name: city.name,
-                        country: city.country,
-                        tzone: city.timezone,
-                        latitude: city.latitude,
-                        longitude: city.longitude,
-                    },
-                });
+    const getOptions = (list: GeoCityInfoProps[]) => {
+        const cityList: {id: number; label: string; value: CityInfoProps}[] =
+            [];
+
+        list.map((city: GeoCityInfoProps) => {
+            const label = `${city.name}, ${city?.admin4 || ''} ${
+                city?.admin3 || ''
+            } ${city?.admin2 || ''} ${city?.admin1 || ''} (${
+                city.country_code
+            })`;
+            cityList.push({
+                id: city.id,
+                label: label.trim(),
+                value: {
+                    name: city.name,
+                    country: city.country,
+                    tzone: city.timezone,
+                    latitude: city.latitude,
+                    longitude: city.longitude,
+                },
             });
+        });
 
         return cityList;
     };

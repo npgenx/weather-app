@@ -1,7 +1,5 @@
 'use client';
-import {
-    CityInfoProps,
-} from '@/shared.types';
+import {CityInfoProps, IUVIndexInfo, IWeatherInfo} from '@/shared.types';
 import {
     createContext,
     Dispatch,
@@ -11,6 +9,8 @@ import {
     useState,
     useEffect,
 } from 'react';
+
+import {getUVInfo, getWeatherInfo} from '@/actions';
 
 type WeatherContext = {
     city: CityInfoProps;
@@ -36,20 +36,31 @@ export type contextProps = {
 
 export const WeatherContextProvider = ({children}: contextProps) => {
     const [city, setCity] = useState<CityInfoProps>(initialCity);
+    const [weather, setWeather] = useState<IWeatherInfo | null>(null);
+    const [uvdata, setUvdata] = useState<IUVIndexInfo | null>(null);
 
+    const getRawLocationData = async (city: CityInfoProps) => {
+        const {latitude, longitude, tzone} = city;
+        const dataw = await getWeatherInfo(latitude, longitude, tzone);
+        const datau = await getUVInfo(latitude, longitude, tzone);
 
+        setWeather(dataw);
+        setUvdata(datau);
+
+    };
 
     useEffect(() => {
-      console.log(`The city was updated to ${city.name}. full details :`, city)
+        getRawLocationData(city);
+    }, [city]);
 
-    }, [city])
-    
-
+    if (weather) { }
+    if (uvdata) {
+    }
 
     return (
         <WeatherContext.Provider
             value={{
-                city
+                city,
             }}>
             <WeatherContextUpdate.Provider value={{setCity}}>
                 {children}
