@@ -35,7 +35,7 @@ const SevenDayForecast = () => {
                 <CardTitle>{7} Day Forecast </CardTitle>
             </CardHeader>
             <CardContent>
-                {Array.from({length: 7}).map((data, index) => {
+                {Array.from({length: 7}).map((data={temp_min:0, temp_max:100}, index) => {
                     return <DayForecast {...data} key={index} />;
                 })}
             </CardContent>

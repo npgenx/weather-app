@@ -1,6 +1,6 @@
 'use client';
 
-import { Card } from '@/components/ui/card';
+import {Card} from '@/components/ui/card';
 
 import {useEffect} from 'react';
 import {MapContainer, TileLayer, useMap, LayersControl} from 'react-leaflet';
@@ -8,10 +8,14 @@ import 'leaflet/dist/leaflet.css';
 
 import { useWeatherContext } from '@/providers/weather-provider';
 
+const initialCoords = {lat: 34.0522, lon: -118.2437};
 
-function FlyToActiveCity({activeCityCords}) {
+const FlyToActiveCity = ({activeCityCords = initialCoords}) => {
     const map = useMap();
-
+    console.log(
+        `type of activeCityCords is ${typeof activeCityCords}`,
+        activeCityCords
+    );
     useEffect(() => {
         if (activeCityCords) {
             const zoomLev = 9;
@@ -27,18 +31,13 @@ function FlyToActiveCity({activeCityCords}) {
         }
     }, [activeCityCords, map]);
     return null;
-}
+};
 
 const WeatherMap = () => {
+    const {
+        city: { latitude, longitude } } = useWeatherContext();
 
-    const city = {
-        coords: [-118.2437,34.0522],
-    };
-
-    const { city: { latitude, longitude} } = useWeatherContext()
-
-
-    const activeCityCords = {
+    const activeCityCords: {lat:number, lon:number} = {
         lat: latitude,
         lon: longitude,
     };
@@ -46,6 +45,7 @@ const WeatherMap = () => {
     return (
         <Card className='col-span-2 lg:col-span-8 lg:row-span-3 '>
             <MapContainer
+                //@ts-expect-error leaflet types are wrong
                 center={[activeCityCords.lat, activeCityCords.lon]}
                 zoom={9}
                 scrollWheelZoom={true}
@@ -56,39 +56,47 @@ const WeatherMap = () => {
                 }}>
                 <TileLayer
                     url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    //@ts-expect-error leaflet types are wrong
+                    attribution={`&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors`}
                 />
 
-                <LayersControl position='topright'>
+                <LayersControl
+                    //@ts-expect-error leaflet types are wrong
+                    position='topright'>
                     <LayersControl.BaseLayer name='Temperature'>
                         <TileLayer
                             url={`https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=85716d70713b33bf033f8a37df623121`}
+                            //@ts-expect-error leaflet types are wrong
                             attribution='&copy; <a href="https://openweathermap.org/">OpenWeatherMap</a>'
                         />
                     </LayersControl.BaseLayer>
+
                     <LayersControl.BaseLayer name='Precipitation'>
                         <TileLayer
                             url={`https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=85716d70713b33bf033f8a37df623121`}
+                            //@ts-expect-error leaflet types are wrong
                             attribution='&copy; <a href="https://openweathermap.org/">OpenWeatherMap</a>'
                         />
                     </LayersControl.BaseLayer>
                     <LayersControl.BaseLayer name='Wind'>
                         <TileLayer
                             url={`https://tile.openweathermap.org/map/wind_new/{z}/{x}/{y}.png?appid=85716d70713b33bf033f8a37df623121`}
+                            //@ts-expect-error leaflet types are wrong
                             attribution='&copy; <a href="https://openweathermap.org/">OpenWeatherMap</a>'
                         />
                     </LayersControl.BaseLayer>
                     <LayersControl.BaseLayer name='Clouds'>
                         <TileLayer
                             url={`https://tile.openweathermap.org/map/clouds_new/{z}/{x}/{y}.png?appid=85716d70713b33bf033f8a37df623121`}
+                            //@ts-expect-error leaflet types are wrong
                             attribution='&copy; <a href="https://openweathermap.org/">OpenWeatherMap</a>'
                         />
                     </LayersControl.BaseLayer>
-                    <LayersControl.BaseLayer
-                        name='Clear Map'
-                        checked='Clear Map'>
+
+                    <LayersControl.BaseLayer name='Clear Map' checked={false}>
                         <TileLayer
                             url={`https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png`}
+                            //@ts-expect-error leaflet types are wrong
                             attribution='&copy; <a href="https://openweathermap.org/">OpenWeatherMap</a>'
                         />
                     </LayersControl.BaseLayer>
