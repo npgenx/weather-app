@@ -12,7 +12,8 @@ import {
 
 import {getUVInfo, getWeatherInfo} from '@/actions';
 
-type WeatherContext = {
+
+interface WeatherContext  {
     city: CityInfoProps;
 };
 
@@ -44,18 +45,17 @@ export const WeatherContextProvider = ({children}: contextProps) => {
         const dataw = await getWeatherInfo(latitude, longitude, tzone);
         const datau = await getUVInfo(latitude, longitude, tzone);
 
-        setWeather(dataw);
-        setUvdata(datau);
-
+        if (dataw) setWeather(dataw);
+        if (datau) setUvdata(datau);
     };
 
     useEffect(() => {
         getRawLocationData(city);
     }, [city]);
 
-    if (weather) { }
-    if (uvdata) {
-    }
+
+ 
+
 
     return (
         <WeatherContext.Provider

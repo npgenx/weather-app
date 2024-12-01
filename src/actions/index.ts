@@ -47,7 +47,7 @@ export const getUVInfo = async (
 ) => {
     try {
         const response = await fetch(
-            `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${latitude}&longitude=-${longitude}&current=us_aqi,pm10,pm2_5,carbon_monoxide,nitrogen_dioxide,sulphur_dioxide,ozone,dust,uv_index,uv_index_clear_sky&timezone=${timezone}&forecast_days=1`
+            `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${latitude}&longitude=${longitude}&current=us_aqi,pm10,pm2_5,carbon_monoxide,nitrogen_dioxide,sulphur_dioxide,ozone,dust,uv_index,uv_index_clear_sky&timezone=${timezone}&forecast_days=1`
         );
 
         if (response.ok) {
