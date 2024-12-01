@@ -19,10 +19,10 @@ const WindInfo = () => {
 
         if (!currentWeather)
             return (
-                <Card className='col-span-2 center'>
+                <Card className='flex col-span-2 items-center justify-center '>
                     <span className='loader' />
                 </Card>
-        );    
+            );    
     
     const {wind_direction_10m,  wind_gusts_10m, wind_speed_10m} = currentWeather
     return (

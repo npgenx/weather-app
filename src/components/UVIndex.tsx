@@ -29,7 +29,7 @@ const UVIndex = () => {
 
     
     if(!uvData) return (
-        <Card className='col-span-2 flex flex-col'>
+        <Card className='col-span-2 flex flex-col center'>
             <span className='loader' />
         </Card>
     );

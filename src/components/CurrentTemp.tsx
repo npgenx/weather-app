@@ -22,7 +22,7 @@ import { WMO } from '@/lib/constants';
 
 const CTSkeleton = () => {
     return (
-        <Card className='col-span-4 lg:col-span-3 lg:row-span-2 items-center justify-items-center flex justify-center'>
+        <Card className='col-span-4 lg:col-span-3 lg:row-span-2  flex items-center justify-center '>
             <span className='loader' />
         </Card>
     );
