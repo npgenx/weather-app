@@ -50,6 +50,11 @@ export const SeachBox = () => {
                     tzone: city.timezone,
                     latitude: city.latitude,
                     longitude: city.longitude,
+                    feature_code: city.feature_code,
+                    admin1: city.admin1,
+                    admin2: city.admin2,
+                    admin3: city.admin3,
+                    admin4: city.admin4,
                 },
             });
         });

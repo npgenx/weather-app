@@ -6,6 +6,11 @@ export type CityInfoProps = {
     latitude: number;
     longitude: number;
     tzone: string;
+    feature_code?: string;
+    admin1?:string;
+    admin2?:string;
+    admin3?:string;
+    admin4?:string;
 };
 
 export type currentWeatherProps = {
@@ -118,7 +123,9 @@ export interface ICurrentWeather {
     wind_speed_10m: number;
     wind_direction_10m: number;
     wind_gusts_10m: number;
-    relative_humidity_2m: number 
+    relative_humidity_2m: number;
+    utc_offset_seconds: number;
+    timezone_abbreviation: string;
 }
 
 export interface ICurrentWeatherUnits {

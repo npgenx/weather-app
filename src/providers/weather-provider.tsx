@@ -36,6 +36,7 @@ const WeatherContextUpdate = createContext<WeatherContextUpdate | null>(null);
 
 const initialCity = {
     name: 'Los Angeles',
+    admin1: 'California',
     country: 'US',
     latitude: 34.0536909,
     longitude: -118.242766,
