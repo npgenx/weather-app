@@ -13,7 +13,7 @@ const DayForecast = ({
     weather_code = '0',
 }) => {
     return (
-        <div className='daily-forecast py-4 flex flex-col justify-evenly border-b-2'>
+        <div className='daily-forecast py-4 flex flex-col justify-evenly border-b-2 '>
             <p className='text-xl min-w-[3.5rem] flex gap-4 items-center justify-between'>
                 <span className='text-base font-bold'>
                     {getLocalDayDate(time)}{' '}
@@ -22,7 +22,9 @@ const DayForecast = ({
                     {getWMOInfo(weather_code)?.text}
                 </span>
                 <Image
-                    src={`./images/${getWMOInfo(weather_code.toString())?.icon}d@2x.png`}
+                    src={`./images/${
+                        getWMOInfo(weather_code.toString())?.icon
+                    }d@2x.png`}
                     alt='weather'
                     width={50}
                     height={50}
@@ -48,14 +50,14 @@ const SevenDayForecast = () => {
 
     if (!dailyWeather)
         return (
-            <Card className='col-span-3 row-start-3 row-span-3 flex items-center justify-center min-h-[300px]'>
+            <Card className='col-span-3 row-start-3 row-span-3   flex items-center justify-center min-h-[300px]'>
                 <span className='loader' />
             </Card>
         );
 
     
     return (
-        <Card className=' col-span-3 row-start-3 row-span-3 min-h-[300px]  overflow-y-scroll'>
+        <Card className='col-span-4 lg:col-span-3 lg:row-start-3 lg:row-span-3 max-h-[620px] overflow-y-scroll'>
             <CardHeader>
                 <CardTitle>{7} Day Forecast </CardTitle>
             </CardHeader>

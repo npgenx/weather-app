@@ -48,7 +48,7 @@ const HourlyForecast = () => {
                             {todaysHours.map((hour, index) => (
                                 <CarouselItem
                                     key={index}
-                                    className='pl-1 md:basis-1/2 lg:basis-1/3 p-0m-0='>
+                                    className='pl-1 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/3 p-0m-0='>
                                     <div className='p-1'>
                                         <Card>
                                             <CardContent className='flex flex-col  items-center content-between justify-between h-44 pt-5'>
@@ -58,7 +58,9 @@ const HourlyForecast = () => {
                                                 <Image
                                                     className='self-center'
                                                     src={`./images/${
-                                                        getWMOInfo(hour.weather_code.toString())?.icon
+                                                        getWMOInfo(
+                                                            hour.weather_code.toString()
+                                                        )?.icon
                                                     }d@2x.png`}
                                                     alt='weather'
                                                     width={60}
@@ -66,7 +68,9 @@ const HourlyForecast = () => {
                                                 />
                                                 <span>
                                                     {Math.round(
-                                                        Number(hour.temperature_2m)
+                                                        Number(
+                                                            hour.temperature_2m
+                                                        )
                                                     )}
                                                     °F
                                                 </span>

@@ -43,7 +43,7 @@ const AirQuality = () => {
     } = uvData;
 
     return (
-        <Card className='col-span-4 row-start-2 col-start-4 min-h-[300px] flex flex-col '>
+        <Card className='col-span-4 lg:col-span-4 lg:row-start-2 lg:col-start-4 min-h-[300px] flex flex-col '>
             <CardHeader>
                 <CardTitle className='flex items-center gap-3'>
                     <Flame />

@@ -26,7 +26,7 @@ const WindInfo = () => {
     
     const {wind_direction_10m,  wind_gusts_10m, wind_speed_10m} = currentWeather
     return (
-        <Card className='col-span-2 flex flex-col min-h-[300px] place-content-between'>
+        <Card className='col-span-2 md:col-span-2 flex flex-col min-h-[300px] place-content-between'>
             <CardHeader>
                 <CardTitle className='flex items-center gap-3'>
                     <WindIcon /> Wind Info

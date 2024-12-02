@@ -11,7 +11,7 @@ import React from 'react';
 
 const WeatherWindow = () => {
     return (
-        <main className='bg-green-200  grid grid-cols-5 xl:grid-cols-11 gap-4 sm:bg-red-100 md:bg-orange-100 lg:bg-pink-100 xl:bg-zinc-300 2xl:bg-blue-200  p-4'>
+        <main className=' grid grid-cols-4 lg:grid-cols-5 xl:grid-cols-11 gap-4 p-4'>
             <CurrentTemp />
             <HourlyForecast />
             <SevenDayForecast />
