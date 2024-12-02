@@ -26,16 +26,16 @@ export type currentWeatherProps = {
     wind_gusts_10m: number;
 };
 export type hourlyWeatherProps = {
-    time: string,
-    temp: number
-    weather_code: string,
+    time: string;
+    temp: number;
+    weather_code: string;
 }
 
 export type dailyWeatherProps = {
     time: number;
     weather_code: number;
-    temp_max: number;
-    temp_min: number;
+    temp_max: string;
+    temp_min: string;
     sunrise: number;
     sunset: number;
 };                
@@ -81,9 +81,9 @@ export interface IWeatherInfo {
 
 export interface IDailyWeather {
     time: string;
-    weather_code: number;
-    temperature_2m_max: number;
-    temperature_2m_min: number;
+    weather_code: string;
+    temperature_2m_max: string;
+    temperature_2m_min: string;
     sunrise: string;
     sunset: string
 }
@@ -97,8 +97,8 @@ export interface IDailyWeatherUnits {
 
 export interface IHourlyWeather {
     time: string;
-    temperature_2m: number;
-    weather_code: number;
+    temperature_2m: string;
+    weather_code: string;
 }
 
 export interface IHourlyWeatherUnits {
@@ -118,6 +118,7 @@ export interface ICurrentWeather {
     wind_speed_10m: number;
     wind_direction_10m: number;
     wind_gusts_10m: number;
+    relative_humidity_2m: number 
 }
 
 export interface ICurrentWeatherUnits {

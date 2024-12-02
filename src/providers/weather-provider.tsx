@@ -77,60 +77,57 @@ export const WeatherContextProvider = ({children}: contextProps) => {
     //         sunrise: '0000'
     //     },
     // ];
-    let dailyWeather: Array<IDailyWeather>;
-    let hourlyWeather: Array<IHourlyWeather> = [
-        {
-            time: 'now',
-            temperature_2m: 0,
-            weather_code: 0,
-        },
-    ];
-        let uvData: IAPCurrent = {
-            time: '',
-            interval: -9999,
-            us_aqi: -9999,
-            pm10: -9999,
-            pm2_5: -9999,
-            carbon_monoxide: -9999,
-            nitrogen_dioxide: -9999,
-            sulphur_dioxide: -9999,
-            ozone: -9999,
-            uv_index: -9999,
-            uv_index_clear_sky: -9999,
-        };
 
+    // let dailyWeather: Array<IDailyWeather>
+    const  dailyWeather: Array<IDailyWeather> = [];
+
+    const hourlyWeather: Array<IHourlyWeather> = [
+        // {
+        //     time: 'now',
+        //     temperature_2m: 0,
+        //     weather_code: 0,
+        // },
+    ];
+    let uvData: IAPCurrent = {
+        time: '',
+        interval: -9999,
+        us_aqi: -9999,
+        pm10: -9999,
+        pm2_5: -9999,
+        carbon_monoxide: -9999,
+        nitrogen_dioxide: -9999,
+        sulphur_dioxide: -9999,
+        ozone: -9999,
+        uv_index: -9999,
+        uv_index_clear_sky: -9999,
+    };
 
 
     if (weather) {
-        dailyWeather = [];
+        
         for (let i = 0; i < weather.hourly?.time?.length; i++) {
             hourlyWeather[i] = {
                 time: weather.hourly.time[i].toString(),
-                temperature_2m: parseFloat(weather.hourly.temperature_2m[i]),
-                weather_code: parseFloat(weather?.hourly?.weather_code[i]),
+                temperature_2m: weather.hourly.temperature_2m[i],
+                weather_code: weather.hourly.weather_code[i],
             };
         }
 
         for (let i = 0; i < weather.daily?.time?.length; i++) {
             dailyWeather[i] = {
                 time: weather.daily.time[i],
-                weather_code: parseFloat(weather.daily.weather_code[i]),
-                temperature_2m_max: parseFloat(
-                    weather.daily.temperature_2m_max[i]
-                ),
-                temperature_2m_min: parseFloat(
-                    weather.daily.temperature_2m_min[i]
-                ),
+                weather_code: weather.daily.weather_code[i],
+                temperature_2m_max: weather.daily.temperature_2m_max[i],
+                temperature_2m_min: weather.daily.temperature_2m_min[i],
                 sunrise: weather.daily.sunrise[i],
                 sunset: weather.daily.sunset[i],
             };
         }
     }
 
-    if (rawUVData) { 
+    if (rawUVData) {
         uvData = rawUVData.current;
     }
-
 
     return (
         <WeatherContext.Provider
@@ -139,7 +136,7 @@ export const WeatherContextProvider = ({children}: contextProps) => {
                 currentWeather,
                 dailyWeather,
                 hourlyWeather,
-                uvData
+                uvData,
             }}>
             <WeatherContextUpdate.Provider value={{setCity}}>
                 {children}
