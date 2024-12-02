@@ -1,4 +1,3 @@
-import Footer from '@/components/Footer';
 
 import WeatherWindow from '@/components/WeatherWindow';
 import Header from '@/components/Header';
@@ -9,7 +8,7 @@ export default function Home() {
             <div className='flex flex-col mx-auto px-4 max-w-screen-2xl min-h-screen'>
                 <Header />
                 <WeatherWindow />
-                <Footer />
+                {/* <Footer /> */}
             </div>
         </div>
     );

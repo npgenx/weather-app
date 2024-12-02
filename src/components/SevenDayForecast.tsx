@@ -48,20 +48,20 @@ const SevenDayForecast = () => {
 
     if (!dailyWeather)
         return (
-            <Card className='col-span-3 row-start-3 row-span-3 flex items-center justify-center '>
+            <Card className='col-span-3 row-start-3 row-span-3 flex items-center justify-center min-h-[300px]'>
                 <span className='loader' />
             </Card>
         );
 
     
     return (
-        <Card className=' col-span-3 row-start-3 row-span-3 max-h-[400px]  overflow-y-scroll'>
+        <Card className=' col-span-3 row-start-3 row-span-3 min-h-[300px]  overflow-y-scroll'>
             <CardHeader>
                 <CardTitle>{7} Day Forecast </CardTitle>
             </CardHeader>
             <CardContent>
                 {dailyWeather.slice(1).map((data, index) => {
-                    return (<DayForecast {...data} key={index} />);
+                    return <DayForecast {...data} key={index} />;
                 })}
             </CardContent>
         </Card>

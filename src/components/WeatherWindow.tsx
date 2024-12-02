@@ -8,11 +8,10 @@ import UVIndex from '@/components/UVIndex';
 import WeatherMap from '@/components/WeatherMap';
 import WindInfo from '@/components/WindInfo';
 import React from 'react';
-import {NoSsr} from '@/components/NoSSR';
 
 const WeatherWindow = () => {
     return (
-        <main className='bg-green-200  grid grid-cols-5 xl:grid-cols-11 gap-0 sm:bg-red-100 md:bg-orange-100 lg:bg-pink-100 xl:bg-zinc-300 2xl:bg-blue-200  p-4'>
+        <main className='bg-green-200  grid grid-cols-5 xl:grid-cols-11 gap-4 sm:bg-red-100 md:bg-orange-100 lg:bg-pink-100 xl:bg-zinc-300 2xl:bg-blue-200  p-4'>
             <CurrentTemp />
             <HourlyForecast />
             <SevenDayForecast />
@@ -20,7 +19,6 @@ const WeatherWindow = () => {
             <WindInfo />
             <HumidityInfo />
             <UVIndex />
-
             <Pressure />
             <WeatherMap />
         </main>

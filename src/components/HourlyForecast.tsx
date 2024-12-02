@@ -32,7 +32,7 @@ const HourlyForecast = () => {
     );
 
     return (
-        <Card className='col-span-4'>
+        <Card className='col-span-4 min-h-[300px]'>
             <CardHeader>
                 <CardTitle className='flex content-baseline gap-1'>
                     <Hourglass size={15} />
