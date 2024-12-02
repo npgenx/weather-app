@@ -1,7 +1,5 @@
 'use client';
 
-
-
 import Image from 'next/image';
 import {
     Card,
@@ -14,8 +12,8 @@ import {
 import {SunriseIcon, SunsetIcon} from 'lucide-react';
 
 import {useWeatherContext} from '@/providers/weather-provider';
-import { getWMOInfo } from '@/lib/constants';
-import { getLocalTime } from '@/lib/utils';
+import {getWMOInfo} from '@/lib/constants';
+import {getLocalTime} from '@/lib/utils';
 
 const CTSkeleton = () => {
     return (
@@ -66,12 +64,12 @@ const CurrentTemp = () => {
                     width={180}
                     height={180}
                 />
-                <p className='font-bold'>
+                <p className='font-bold p--0'>
                     {getWMOInfo(currentWeather.weather_code)?.text}
                 </p>
             </CardContent>
-            <CardFooter className='pb-0'>
-                <div className='flex pt-10 justify-around gap-2 w-full text-xl font-semibold'>
+            <CardFooter className=' flex flex-col'>
+                <div className='flex p-4 justify-around gap-2 w-full text-xl font-semibold'>
                     <span className='flex gap-2 items-center '>
                         <SunriseIcon />
                         <p className='pt-1'>
@@ -86,6 +84,10 @@ const CurrentTemp = () => {
                         </p>
                     </span>
                 </div>
+                <em>
+                    sampled at: {getLocalTime(currentWeather?.time)}{' '}
+                    {currentWeather.timezone_abbreviation}
+                </em>
             </CardFooter>
         </Card>
     );

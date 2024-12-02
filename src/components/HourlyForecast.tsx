@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
- import {Card, CardHeader, CardTitle, CardContent} from '@/components/ui/card';
+import {Card, CardHeader, CardTitle, CardContent} from '@/components/ui/card';
 import {Hourglass} from 'lucide-react';
 import {
     Carousel,
@@ -10,9 +10,9 @@ import {
     CarouselNext,
 } from './ui/carousel';
 
-import { useWeatherContext } from '@/providers/weather-provider';
+import {useWeatherContext} from '@/providers/weather-provider';
 
-import { getLocalDay, getLocalTime } from '@/lib/utils'
+import {getLocalDay, getLocalTime} from '@/lib/utils';
 import {getWMOInfo} from '@/lib/constants';
 
 import dayjs from 'dayjs';
@@ -25,10 +25,14 @@ const HourlyForecast = () => {
             <Card className='col-span-4 flex items-center justify-center '>
                 <span className='loader' />
             </Card>
-        ); 
+        );
+
+    const {time} = currentWeather;
 
     const todaysHours = hourlyWeather.filter(
-        ts => dayjs().isSame(ts.time, 'day') && dayjs().isBefore(ts.time, 'hour')
+        ts =>
+            dayjs(time).isSame(ts.time, 'day') &&
+            dayjs(time).isBefore(ts.time, 'hour')
     );
 
     return (
@@ -36,7 +40,11 @@ const HourlyForecast = () => {
             <CardHeader>
                 <CardTitle className='flex content-baseline gap-1'>
                     <Hourglass size={15} />
-                    Hourly forecast for {getLocalDay(todaysHours[0]?.time)}
+                    Hourly{' '}
+                    <em className='font-medium'>
+                        ({currentWeather.timezone_abbreviation})
+                    </em>
+                    forecast for {getLocalDay(todaysHours[0]?.time)}
                 </CardTitle>
             </CardHeader>
             <CardContent>

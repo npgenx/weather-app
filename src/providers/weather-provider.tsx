@@ -5,7 +5,7 @@ import {
     IDailyWeather,
     IHourlyWeather,
     IAirPollution,
-    IWeatherInfo
+    IWeatherInfo,
 } from '@/shared.types';
 import {
     createContext,
@@ -18,9 +18,7 @@ import {
 } from 'react';
 
 import {getUVInfo, getWeatherInfo} from '@/actions';
-import { IAPCurrent } from '../shared.types';
-
-
+import {IAPCurrent} from '../shared.types';
 
 export interface WeatherContext {
     city: CityInfoProps;
@@ -66,45 +64,19 @@ export const WeatherContextProvider = ({children}: contextProps) => {
         getRawLocationData(city);
     }, [city]);
 
-    const currentWeather = weather?.current;
-    // let dailyWeather: Array<IDailyWeather> = [
-    //     {
-    //         time: 'now',
-    //         weather_code: 0,
-    //         temperature_2m_max: 200,
-    //         temperature_2m_min: -200,
-    //         sunset: '0000',
-    //         sunrise: '0000'
-    //     },
-    // ];
+    const dailyWeather: Array<IDailyWeather> = [];
+    const hourlyWeather: Array<IHourlyWeather> = [];
+    const {current: uvData} = rawUVData || {};
 
-    // let dailyWeather: Array<IDailyWeather>
-    const  dailyWeather: Array<IDailyWeather> = [];
-
-    const hourlyWeather: Array<IHourlyWeather> = [
-        // {
-        //     time: 'now',
-        //     temperature_2m: 0,
-        //     weather_code: 0,
-        // },
-    ];
-    let uvData: IAPCurrent = {
-        time: '',
-        interval: -9999,
-        us_aqi: -9999,
-        pm10: -9999,
-        pm2_5: -9999,
-        carbon_monoxide: -9999,
-        nitrogen_dioxide: -9999,
-        sulphur_dioxide: -9999,
-        ozone: -9999,
-        uv_index: -9999,
-        uv_index_clear_sky: -9999,
-    };
-
-
+    let currentWeather;
     if (weather) {
-        
+        const {utc_offset_seconds, timezone_abbreviation, current} = weather;
+        currentWeather = {
+            ...current,
+            utc_offset_seconds,
+            timezone_abbreviation,
+        };
+
         for (let i = 0; i < weather.hourly?.time?.length; i++) {
             hourlyWeather[i] = {
                 time: weather.hourly.time[i].toString(),
@@ -123,10 +95,6 @@ export const WeatherContextProvider = ({children}: contextProps) => {
                 sunset: weather.daily.sunset[i],
             };
         }
-    }
-
-    if (rawUVData) {
-        uvData = rawUVData.current;
     }
 
     return (
