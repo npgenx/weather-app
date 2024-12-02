@@ -7,6 +7,7 @@
     "dev-chrome": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
+    "start-static": "npx serve@latest out",
     "lint": "next lint"
   },
   "dependencies": {

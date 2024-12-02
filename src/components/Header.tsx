@@ -12,8 +12,6 @@ const Header = () => {
 
 const {city} = useWeatherContext();
     
-console.log(city)
-
   return (
       <header className='flex justify-between py-4 gap-10 items-center h-auto'>
           <div className='location pl-5 flex font-bold '>

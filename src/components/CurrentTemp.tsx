@@ -14,7 +14,7 @@ import {
 import {SunriseIcon, SunsetIcon} from 'lucide-react';
 
 import {useWeatherContext} from '@/providers/weather-provider';
-import { WMO } from '@/lib/constants';
+import { getWMOInfo } from '@/lib/constants';
 import { getLocalTime } from '@/lib/utils';
 
 const CTSkeleton = () => {
@@ -42,25 +42,33 @@ const CurrentTemp = () => {
                 </CardDescription>
                 <p className='flex  font-bold pt-4 justify-around'>
                     <span>
-                        Low:{Math.round(dailyWeather[0]?.temperature_2m_min)}°F
+                        Low:
+                        {Math.round(
+                            Number(dailyWeather[0]?.temperature_2m_min)
+                        )}
+                        °F
                     </span>
                     <span>
-                        High:{Math.round(dailyWeather[0]?.temperature_2m_max)}°F
+                        High:
+                        {Math.round(
+                            Number(dailyWeather[0]?.temperature_2m_max)
+                        )}
+                        °F
                     </span>
                 </p>
             </CardHeader>
             <CardContent className='flex flex-col justify-center p-0'>
                 <Image
-                    className='self-center'
+                    className='self-center dark:invert'
                     src={`./images/${
-                        WMO[currentWeather.weather_code].icon
+                        getWMOInfo(currentWeather.weather_code)?.icon
                     }d@2x.png`}
                     alt='weather'
                     width={120}
                     height={120}
                 />
                 <p className='font-bold'>
-                    {WMO[currentWeather.weather_code].text}
+                    {getWMOInfo(currentWeather.weather_code)?.text}
                 </p>
             </CardContent>
             <CardFooter className='pb-0'>

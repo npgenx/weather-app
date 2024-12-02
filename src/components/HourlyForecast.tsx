@@ -13,7 +13,7 @@ import {
 import { useWeatherContext } from '@/providers/weather-provider';
 
 import { getLocalDay, getLocalTime } from '@/lib/utils'
-import {WMO} from '@/lib/constants';
+import {getWMOInfo} from '@/lib/constants';
 
 import dayjs from 'dayjs';
 
@@ -43,12 +43,12 @@ const HourlyForecast = () => {
                 {todaysHours.length < 1 ? (
                     <div className='place-self-center text-3xl'>No Data</div>
                 ) : (
-                    <Carousel className='tommy w-full max-w-sm place-self-center'>
-                        <CarouselContent className='-ml-1'>
+                    <Carousel className='tommy w-full max-w-sm place-self-center m-0 p-0'>
+                        <CarouselContent className='-ml-1 p-0'>
                             {todaysHours.map((hour, index) => (
                                 <CarouselItem
                                     key={index}
-                                    className='pl-1 md:basis-1/2 lg:basis-1/3'>
+                                    className='pl-1 md:basis-1/2 lg:basis-1/3 p-0m-0='>
                                     <div className='p-1'>
                                         <Card>
                                             <CardContent className='flex flex-col  items-center content-between justify-between h-44 pt-5'>
@@ -58,8 +58,7 @@ const HourlyForecast = () => {
                                                 <Image
                                                     className='self-center'
                                                     src={`./images/${
-                                                        WMO[hour.weather_code]
-                                                            .icon
+                                                        getWMOInfo(hour.weather_code.toString())?.icon
                                                     }d@2x.png`}
                                                     alt='weather'
                                                     width={60}
@@ -67,7 +66,7 @@ const HourlyForecast = () => {
                                                 />
                                                 <span>
                                                     {Math.round(
-                                                        hour.temperature_2m
+                                                        Number(hour.temperature_2m)
                                                     )}
                                                     °F
                                                 </span>
