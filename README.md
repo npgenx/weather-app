@@ -1,22 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Another Weather App
+
+## Overview
+This project was inspired by these 2 projects: [Meteo-nix](https://github.com/DariusLukasukas/nextjs-weather-app) and [Maclinz's app](https://github.com/Maclinz/weather-app). The goal was to address some of the issues found in those projects.
+
+## Features
+- The app allows for robust searching of international locations.
+- Correctly offers the high and low temps for a given area (if available) 
+- Forecasts: hourly for a given day and daily for 7 days
+- The map has overlays for temperature, precipitation, wind and clouds (Please zoom out to see the layers).
+
+## Specs
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app). It was configured with the following:
+
+- [Tailwindcss](https://tailwindcss.com/docs/installation)
+- [ESLint](https://eslint.org/)
+- [Typescript](https://www.typescriptlang.org/)
+- [App Router](https://nextjs.org/docs/app)
+- [shadcn UI](https://ui.shadcn.com/docs) with  [next-themes](https://ui.shadcn.com/docs/dark-mode/next) for dark mode 
+- Configured for [VSCode debugging](https://nextjs.org/docs/app/building-your-application/configuring/debugging)
+
+Note: *Due to using [React 19RC](https://ui.shadcn.com/docs/react-19) you may have issues deploying using npm (at the time of this writing). If you're using npm, you can install shadcn/ui dependencies with a flag. The shadcn CLI will prompt you to select a flag when you run it. No flags required for pnpm, bun, or yarn.*
 
 ## Getting Started
 
 First, run the development server:
 
 ```bash
-npm run dev
-# or
 yarn dev
 # or
 pnpm dev
 # or
 bun dev
+npm run dev
+# or
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
@@ -29,8 +49,3 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
