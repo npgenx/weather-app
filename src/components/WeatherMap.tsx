@@ -15,7 +15,7 @@ const FlyToActiveCity = ({activeCityCords = initialCoords}) => {
 
     useEffect(() => {
         if (activeCityCords) {
-            const zoomLev = 9;
+            const zoomLev = 13;
             const flyToOptions = {
                 duration: 1.5,
             };
@@ -44,7 +44,7 @@ const WeatherMap = () => {
             <MapContainer
                 //@ts-expect-error leaflet types are wrong
                 center={[activeCityCords.lat, activeCityCords.lon]}
-                zoom={9}
+                zoom={13}
                 scrollWheelZoom={true}
                 className=' rounded-lg p-0 z-0 m-4'
                 style={{
