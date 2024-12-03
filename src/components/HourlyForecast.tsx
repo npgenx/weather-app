@@ -51,12 +51,12 @@ const HourlyForecast = () => {
                 {todaysHours.length < 1 ? (
                     <div className='place-self-center text-3xl'>No Data</div>
                 ) : (
-                    <Carousel className='place-self-center m-0 p-0 h-fit w-5/6'>
+                    <Carousel className='place-self-center m-auto p-10 h-fit w-5/6'>
                         <CarouselContent className='-ml-1 p-0'>
                             {todaysHours.map((hour, index) => (
                                 <CarouselItem
                                     key={index}
-                                    className='pl-1 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/3 p-0m-0='>
+                                    className='pl-1 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/3 p-0 m-0'>
                                     <div className='p-1'>
                                         <Card>
                                             <CardContent className='flex flex-col  items-center content-between justify-between h-44 pt-5'>
@@ -79,7 +79,7 @@ const HourlyForecast = () => {
                                                         Number(
                                                             hour.temperature_2m
                                                         )
-                                                    )}
+                                                    )}{' '}
                                                     °F
                                                 </span>
                                             </CardContent>
@@ -88,8 +88,8 @@ const HourlyForecast = () => {
                                 </CarouselItem>
                             ))}
                         </CarouselContent>
-                        <CarouselPrevious />
-                        <CarouselNext />
+                        <CarouselPrevious className='ml-2' />
+                        <CarouselNext className='mr-4' />
                     </Carousel>
                 )}
             </CardContent>
