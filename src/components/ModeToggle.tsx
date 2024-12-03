@@ -22,7 +22,7 @@ export const ModeToggle = () => {
     };
 
     return (
-        <Button variant='ghost' size='icon' onClick={switchTheme}>
+        <Button variant='outline' size='icon' onClick={switchTheme}>
             <Sun className={`h-5 w-5 ${showHide('light')}`} />
             <Moon className={`h-5 w-5 ${showHide('dark')}`} />
             <MonitorCog className={`h-5 w-5 ${showHide('system')}`} />

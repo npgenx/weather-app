@@ -31,7 +31,7 @@ const AirQuality = () => {
                 <span className='loader' />
             </Card>
         );
-    
+
     const {
         us_aqi,
         carbon_monoxide,

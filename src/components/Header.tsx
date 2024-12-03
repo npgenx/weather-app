@@ -2,10 +2,11 @@
 
 import React from 'react';
 import {ModeToggle} from '@/components/ModeToggle';
-import {NavigationIcon} from 'lucide-react';
+import {Github, NavigationIcon} from 'lucide-react';
 import {SeachBox} from '@/components/SearchBox';
 import {useWeatherContext} from '@/providers/weather-provider';
 import {CityInfoProps} from '@/shared.types';
+import {Button} from '@/components/ui/button';
 
 const Header = () => {
     const {city} = useWeatherContext();
@@ -27,8 +28,17 @@ const Header = () => {
             <div className='grow'>
                 <SeachBox />
             </div>
+            <div className='flex items-center gap-4'>
+                <ModeToggle />
 
-            <ModeToggle />
+                <Button variant='outline' size='icon'>
+                    <a
+                        href='https://github.com/npgenx/weather-app'
+                        target='blank'>
+                        <Github />
+                    </a>
+                </Button>
+            </div>
         </header>
     );
 };

@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import {
     Card,
@@ -9,22 +9,21 @@ import {
 } from '@/components/ui/card';
 import Compass from '@/components/ui/compass';
 
-import { WindIcon } from 'lucide-react';
+import {WindIcon} from 'lucide-react';
 
 import React from 'react';
 import {useWeatherContext} from '@/providers/weather-provider';
 const WindInfo = () => {
+    const {currentWeather} = useWeatherContext();
 
-    const { currentWeather } = useWeatherContext();
+    if (!currentWeather)
+        return (
+            <Card className='flex col-span-2 items-center justify-center min-h-[300px]'>
+                <span className='loader' />
+            </Card>
+        );
 
-        if (!currentWeather)
-            return (
-                <Card className='flex col-span-2 items-center justify-center min-h-[300px]'>
-                    <span className='loader' />
-                </Card>
-            );    
-    
-    const {wind_direction_10m,  wind_gusts_10m, wind_speed_10m} = currentWeather
+    const {wind_direction_10m, wind_gusts_10m, wind_speed_10m} = currentWeather;
     return (
         <Card className='col-span-2 md:col-span-2 flex flex-col min-h-[300px] place-content-between'>
             <CardHeader>
