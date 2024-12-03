@@ -28,7 +28,7 @@ const DayForecast = ({
                     alt='weather'
                     width={50}
                     height={50}
-                    className=''
+                    className='mydropshadow'
                 />
             </p>
 

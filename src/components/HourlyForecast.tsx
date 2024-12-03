@@ -64,7 +64,7 @@ const HourlyForecast = () => {
                                                     {getLocalTime(hour.time)}
                                                 </span>
                                                 <Image
-                                                    className='self-center'
+                                                    className='mydropshadow self-center'
                                                     src={`./images/${
                                                         getWMOInfo(
                                                             hour.weather_code.toString()

@@ -56,7 +56,7 @@ const CurrentTemp = () => {
             </CardHeader>
             <CardContent className='flex flex-col justify-center p-0'>
                 <Image
-                    className='self-center dark:invert'
+                    className=' mydropshadow self-center'
                     src={`./images/${
                         getWMOInfo(currentWeather.weather_code)?.icon
                     }d@2x.png`}

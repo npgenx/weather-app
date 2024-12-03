@@ -1,4 +1,4 @@
-const WMO = [
+export const WMO = [
         {code: '0', text: 'Sunny', icon: '01'},
         {code: '1', text: 'Mainly Clear', icon: '02'},
         {code: '2', text: 'Partly Cloudy', icon: '02'},
