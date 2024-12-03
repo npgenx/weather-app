@@ -1,4 +1,5 @@
 # Another Weather App
+<img width="1980" alt="Screenshot of App" src="./public/app-screenshot .jpg">
 
 ## Overview
 This project was inspired by these 2 projects: [Meteo-nix](https://github.com/DariusLukasukas/nextjs-weather-app) and [Maclinz's app](https://github.com/Maclinz/weather-app). The goal was to address some of the issues found in those projects.
