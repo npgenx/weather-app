@@ -47,11 +47,11 @@ const HourlyForecast = () => {
                     forecast for {getLocalDay(todaysHours[0]?.time)}
                 </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className='p-0'>
                 {todaysHours.length < 1 ? (
                     <div className='place-self-center text-3xl'>No Data</div>
                 ) : (
-                    <Carousel className='tommy w-full max-w-sm place-self-center m-0 p-0'>
+                    <Carousel className='place-self-center m-0 p-0 h-fit w-5/6'>
                         <CarouselContent className='-ml-1 p-0'>
                             {todaysHours.map((hour, index) => (
                                 <CarouselItem

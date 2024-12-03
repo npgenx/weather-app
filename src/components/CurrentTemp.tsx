@@ -17,7 +17,7 @@ import {getLocalTime} from '@/lib/utils';
 
 const CTSkeleton = () => {
     return (
-        <Card className='col-span-4 lg:col-span-3 lg:row-span-2  flex items-center justify-center '>
+        <Card className='md: lg:col-span-3 lg:row-span-2  flex items-center justify-center '>
             <span className='loader' />
         </Card>
     );
