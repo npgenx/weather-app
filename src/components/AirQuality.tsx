@@ -9,7 +9,7 @@ import {
     CardTitle,
 } from '@/components/ui/card';
 import {Flame} from 'lucide-react';
-import {Slider} from './ui/slider';
+import {Slider} from  '@/components/ui/slider'
 import {useWeatherContext} from '@/providers/weather-provider';
 
 const AirQuality = () => {

@@ -8,7 +8,7 @@ import {
     CarouselItem,
     CarouselPrevious,
     CarouselNext,
-} from './ui/carousel';
+} from '@/components/ui/carousel';
 
 import {useWeatherContext} from '@/providers/weather-provider';
 
@@ -35,6 +35,16 @@ const HourlyForecast = () => {
             dayjs(time).isBefore(ts.time, 'hour')
     );
 
+    const iconSource = (code: string) => { 
+
+        return (code == '0' && currentWeather.is_day == 0)
+            ? 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIwLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgY2xhc3M9Imx1Y2lkZSBsdWNpZGUtbW9vbiI+PHBhdGggZD0iTTEyIDNhNiA2IDAgMCAwIDkgOSA5IDkgMCAxIDEtOS05WiIvPjwvc3ZnPg=='
+            : `./images/${getWMOInfo(currentWeather.weather_code)?.icon}${
+                  currentWeather.is_day ? 'd' : 'n'
+              }@2x.png`;
+    }
+        
+
     return (
         <Card className='col-span-4 min-h-[300px]'>
             <CardHeader>
@@ -60,16 +70,14 @@ const HourlyForecast = () => {
                                     <div className='p-1'>
                                         <Card>
                                             <CardContent className='flex flex-col  items-center content-between justify-between h-44 pt-5'>
-                                                <span className=''>
+                                                <span className='text-sm'>
                                                     {getLocalTime(hour.time)}
                                                 </span>
                                                 <Image
                                                     className='mydropshadow self-center'
-                                                    src={`./images/${
-                                                        getWMOInfo(
-                                                            hour.weather_code.toString()
-                                                        )?.icon
-                                                    }d@2x.png`}
+                                                    src={iconSource(
+                                                        hour.weather_code.toString()
+                                                    )}
                                                     alt='weather'
                                                     width={60}
                                                     height={60}
