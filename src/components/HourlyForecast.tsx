@@ -30,7 +30,7 @@ const HourlyForecast = () => {
 
     const { time } = currentWeather;
     const solarInfo = (dailyWeather) ? dailyWeather[0] : {};
-    const { sunrise ='0', sunset='9999999' } = { ...solarInfo};
+    const { sunrise ='0', sunset='9999999' } = {...solarInfo};
 
     const isNight = (time:string) => {return dayjs(time).isBefore(sunrise) || dayjs(time).isAfter(sunset);}
 
