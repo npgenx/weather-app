@@ -81,8 +81,8 @@ const HourlyForecast = () => {
                                             <span className='text-sm'>
                                                 {getLocalTime(hour.time)}
                                             </span>
-                                            <span>
-                                                {getLocalDay(hour.time)}
+                                            <span className='text-sm'>
+                                                {(!dayjs(time).isSame(hour.time, 'day')) ? getLocalDay(hour.time): ''}
                                             </span>
                                             <Image
                                                 className='mydropshadow self-center'
