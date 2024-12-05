@@ -20,7 +20,7 @@ const Header = () => {
     };
 
     return (
-        <header className='flex justify-between py-4 gap-10 items-center h-auto'>
+        <header className='flex justify-between py-4 gap-10 items-center h-auto sticky top-0  bg-background z-50'>
             <div className='location pl-5 flex font-bold '>
                 <NavigationIcon size={15} className='absolute -ml-5 mt-1' />
                 {getLocationLabel(city)}
