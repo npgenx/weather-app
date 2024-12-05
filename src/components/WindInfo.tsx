@@ -13,19 +13,20 @@ import {WindIcon} from 'lucide-react';
 
 import React from 'react';
 import {useWeatherContext} from '@/providers/weather-provider';
+import CardLoader from '@/components/CardLoader';
+
 const WindInfo = () => {
-    const {currentWeather} = useWeatherContext();
+    const { currentWeather } = useWeatherContext();
+    
+
+    const theClasses:string = 'col-span-2 md:col-span-2 flex flex-col min-h-[300px] place-content-between';
 
     if (!currentWeather)
-        return (
-            <Card className='flex col-span-2 items-center justify-center min-h-[300px]'>
-                <span className='loader' />
-            </Card>
-        );
+        return <CardLoader className={theClasses} />;
 
     const {wind_direction_10m, wind_gusts_10m, wind_speed_10m} = currentWeather;
     return (
-        <Card className='col-span-2 md:col-span-2 flex flex-col min-h-[300px] place-content-between'>
+        <Card className={ theClasses}>
             <CardHeader>
                 <CardTitle className='flex items-center gap-3'>
                     <WindIcon /> Wind Info

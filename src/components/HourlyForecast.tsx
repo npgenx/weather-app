@@ -17,8 +17,9 @@ import {getWMOInfo} from '@/lib/constants';
 
 import dayjs from 'dayjs';
 
+
 const HourlyForecast = () => {
-    const {currentWeather, hourlyWeather} = useWeatherContext();
+    const {currentWeather, hourlyWeather, dailyWeather} = useWeatherContext();
 
     if (!currentWeather || !hourlyWeather)
         return (
@@ -27,7 +28,11 @@ const HourlyForecast = () => {
             </Card>
         );
 
-    const {time} = currentWeather;
+    const { time } = currentWeather;
+    const solarInfo = (dailyWeather) ? dailyWeather[0] : {};
+    const { sunrise ='0', sunset='9999999' } = { ...solarInfo};
+
+    const isNight = (time:string) => {return dayjs(time).isBefore(sunrise) || dayjs(time).isAfter(sunset);}
 
     const todaysHours = hourlyWeather.filter(
         ts =>
@@ -35,14 +40,14 @@ const HourlyForecast = () => {
             dayjs(time).isBefore(ts.time, 'hour')
     );
 
-    const iconSource = (code: string) => { 
-
-        return (code == '0' && currentWeather.is_day == 0)
+    const iconSource = (hour: { time: string; weather_code: string }) => {
+        const test = isNight(hour.time);
+        return hour.weather_code.toString() == '0' && isNight(hour.time)
             ? 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIwLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgY2xhc3M9Imx1Y2lkZSBsdWNpZGUtbW9vbiI+PHBhdGggZD0iTTEyIDNhNiA2IDAgMCAwIDkgOSA5IDkgMCAxIDEtOS05WiIvPjwvc3ZnPg=='
             : `./images/${getWMOInfo(currentWeather.weather_code)?.icon}${
-                  currentWeather.is_day ? 'd' : 'n'
+                  test ? 'n' : 'd'
               }@2x.png`;
-    }
+    };
         
 
     return (
@@ -75,9 +80,7 @@ const HourlyForecast = () => {
                                                 </span>
                                                 <Image
                                                     className='mydropshadow self-center'
-                                                    src={iconSource(
-                                                        hour.weather_code.toString()
-                                                    )}
+                                                    src={iconSource( hour  )}
                                                     alt='weather'
                                                     width={60}
                                                     height={60}

@@ -14,19 +14,12 @@ import {SunriseIcon, SunsetIcon} from 'lucide-react';
 import {useWeatherContext} from '@/providers/weather-provider';
 import {getWMOInfo} from '@/lib/constants';
 import {getLocalTime} from '@/lib/utils';
-
-const CTSkeleton = () => {
-    return (
-        <Card className='md: lg:col-span-3 lg:row-span-2  flex items-center justify-center '>
-            <span className='loader' />
-        </Card>
-    );
-};
+import CardLoader from './CardLoader';
 
 const CurrentTemp = () => {
     const {currentWeather, dailyWeather} = useWeatherContext();
 
-    if (!currentWeather || !dailyWeather) return <CTSkeleton />;
+    if (!currentWeather || !dailyWeather) return <CardLoader className={'col-span-4 lg:col-span-3 lg:row-span-2'} />;
 
     const iconSource = (currentWeather.weather_code == 0 && currentWeather.is_day == 0) ?
         'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIwLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgY2xhc3M9Imx1Y2lkZSBsdWNpZGUtbW9vbiI+PHBhdGggZD0iTTEyIDNhNiA2IDAgMCAwIDkgOSA5IDkgMCAxIDEtOS05WiIvPjwvc3ZnPg=='
