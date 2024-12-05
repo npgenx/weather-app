@@ -1,5 +1,3 @@
-
-
 export type CityInfoProps = {
     name: string;
     country: string;
@@ -7,10 +5,10 @@ export type CityInfoProps = {
     longitude: number;
     tzone: string;
     feature_code?: string;
-    admin1?:string;
-    admin2?:string;
-    admin3?:string;
-    admin4?:string;
+    admin1?: string;
+    admin2?: string;
+    admin3?: string;
+    admin4?: string;
 };
 
 export type currentWeatherProps = {
@@ -29,12 +27,15 @@ export type currentWeatherProps = {
     wind_speed_10m: number;
     wind_direction_10m: number;
     wind_gusts_10m: number;
+    utc_offset_seconds: number;
+
 };
+
 export type hourlyWeatherProps = {
     time: string;
     temp: number;
     weather_code: string;
-}
+};
 
 export type dailyWeatherProps = {
     time: number;
@@ -43,7 +44,7 @@ export type dailyWeatherProps = {
     temp_min: string;
     sunrise: number;
     sunset: number;
-};                
+};
 
 export type GeoCityInfoProps = {
     id: number;
@@ -90,7 +91,7 @@ export interface IDailyWeather {
     temperature_2m_max: string;
     temperature_2m_min: string;
     sunrise: string;
-    sunset: string
+    sunset: string;
 }
 
 export interface IDailyWeatherUnits {
@@ -141,44 +142,43 @@ export interface ICurrentWeatherUnits {
     wind_gusts_10m: string;
 }
 
-
 /// JSON to types converter
 export interface IAirPollution {
-  latitude: number;
-  longitude: number;
-  generationtime_ms: number;
-  utc_offset_seconds: number;
-  timezone: string;
-  timezone_abbreviation: string;
-  elevation: number;
-  current_units: IAPCurrentunits;
-  current: IAPCurrent;
+    latitude: number;
+    longitude: number;
+    generationtime_ms: number;
+    utc_offset_seconds: number;
+    timezone: string;
+    timezone_abbreviation: string;
+    elevation: number;
+    current_units: IAPCurrentunits;
+    current: IAPCurrent;
 }
 
 export interface IAPCurrent {
-  time: string;
-  interval: number;
-  us_aqi: number;
-  pm10: number;
-  pm2_5: number;
-  carbon_monoxide: number;
-  nitrogen_dioxide: number;
-  sulphur_dioxide: number;
-  ozone: number;
-  uv_index: number;
-  uv_index_clear_sky: number;
+    time: string;
+    interval: number;
+    us_aqi: number;
+    pm10: number;
+    pm2_5: number;
+    carbon_monoxide: number;
+    nitrogen_dioxide: number;
+    sulphur_dioxide: number;
+    ozone: number;
+    uv_index: number;
+    uv_index_clear_sky: number;
 }
 
 export interface IAPCurrentunits {
-  time: string;
-  interval: string;
-  us_aqi: string;
-  pm10: string;
-  pm2_5: string;
-  carbon_monoxide: string;
-  nitrogen_dioxide: string;
-  sulphur_dioxide: string;
-  ozone: string;
-  uv_index: string;
-  uv_index_clear_sky: string;
+    time: string;
+    interval: string;
+    us_aqi: string;
+    pm10: string;
+    pm2_5: string;
+    carbon_monoxide: string;
+    nitrogen_dioxide: string;
+    sulphur_dioxide: string;
+    ozone: string;
+    uv_index: string;
+    uv_index_clear_sky: string;
 }

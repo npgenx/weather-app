@@ -51,6 +51,9 @@ export const WeatherContextProvider = ({children}: contextProps) => {
     const [city, setCity] = useState<CityInfoProps>(initialCity);
     const [weather, setWeather] = useState<IWeatherInfo | null>(null);
     const [rawUVData, setRawUVData] = useState<IAirPollution | null>(null);
+    const dailyWeather: Array<IDailyWeather> = [];
+    const hourlyWeather: Array<IHourlyWeather> = [];
+    const {current: uvData} = rawUVData || {};
 
     const getRawLocationData = async (city: CityInfoProps) => {
         const {latitude, longitude, tzone} = city;
@@ -64,10 +67,6 @@ export const WeatherContextProvider = ({children}: contextProps) => {
     useEffect(() => {
         getRawLocationData(city);
     }, [city]);
-
-    const dailyWeather: Array<IDailyWeather> = [];
-    const hourlyWeather: Array<IHourlyWeather> = [];
-    const {current: uvData} = rawUVData || {};
 
     let currentWeather;
     if (weather) {
