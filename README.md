@@ -2,13 +2,15 @@
 <img width="1980" alt="Screenshot of App" src="./public/app-screenshot .jpg">
 
 ## Overview
-This project was inspired by these 2 projects: [Meteo-nix](https://github.com/DariusLukasukas/nextjs-weather-app) and [Maclinz's app](https://github.com/Maclinz/weather-app). The goal was to address some of the issues found in those projects.
+This project was inspired by these 2 projects: [Meteo-nix](https://github.com/DariusLukasukas/nextjs-weather-app) and [Maclinz's app](https://github.com/Maclinz/weather-app). The goal was to address some of the [issues](./Tech_Summary.md) found in those projects and other weather apps.
 
 ## Features
 - The app allows for robust searching of international locations.
 - Correctly offers the high and low temps for a given area (if available) 
 - Forecasts: hourly for a given day and daily for 7 days
 - The map has overlays for temperature, precipitation, wind and clouds (Please zoom out to see the layers).
+
+additional info can be found in the 
 
 ## Specs
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app). It was configured with the following:
@@ -43,10 +45,5 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 

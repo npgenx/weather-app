@@ -1,0 +1,8 @@
+# Overview of npgenx-weather-app
+
+- The project was bootstrapped with the Next.js 15 to allow for React Server Components(RSC)/Server Side components(SSC)  which would hide private API keys. Currenly the site is consuming data from [Open Meteo](https://open-meteo.com/) which offers free API usage so there is no need for RSC. Additionally, since this apps is being hosted on a static service tier of [Github Pages](https://pages.github.com/) SSR/RSC would not work.  This will be revisited would looking into caching data using the [NWS](https://pages.github.com/) which offeres weather alerts. 
+ - Other apps had issues erroneously labelled high and low variances of current temps as daily highs & lows temperatures.  The Highs & Low daily temps you currently see (under Current and 7 day forecast) are truly the daily highs and lows (which typically have a variance of ± 10°F not 2°F)
+ - This app also displays the time in the location's zone other apps where showing incorrect times. ADditionally,  it gives the proper weather description and icons based on whether the sampled time is before or after the local sunrise and or sunset.
+ - The Air Quality info has been updated to show particulate matter info (this will tie in witha a future enhancment of weather alerts)
+ - The map has weather overlays for the following: temperature, precipitation, clouds and winds.  Due to the resolution of the current overlays, one has to zoom out to see the effective changes respresented by the overlays.
+- 

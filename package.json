@@ -1,7 +1,12 @@
 {
-  "name": "next-shadcn",
+  "name": "another-weather-app",
   "version": "0.1.0",
   "private": true,
+  "author": "JP Morgan <weatherapp@jp-morgan.dev> (https://www.jp-morgan.dev/)",
+  "engines": {
+    "node": "^20.0.0",
+    "yarn": ">= 1.19.1"
+  },
   "scripts": {
     "dev": "next dev",
     "dev-chrome": "NODE_OPTIONS='--inspect' next dev",
