@@ -19,18 +19,16 @@ import CardLoader from './CardLoader';
 const CurrentTemp = () => {
     const {currentWeather, dailyWeather} = useWeatherContext();
 
-    if (!currentWeather || !dailyWeather) return <CardLoader className={'col-span-4 lg:col-span-3 lg:row-span-2'} />;
+    if (!currentWeather || !dailyWeather) return <CardLoader />;
 
+    const iconSource = `./images/${
+        getWMOInfo(currentWeather.weather_code)?.icon
+    }${currentWeather.is_day ? 'd' : 'n'}@2x.png`;
 
-
-    const iconSource = `./images/${getWMOInfo(currentWeather.weather_code)?.icon}${(currentWeather.is_day) ? 'd' : 'n'}@2x.png`;
-    
-    const weatherDescription = (currentWeather.weather_code == 0 && !currentWeather.is_day) ? "Clear" : getWMOInfo(currentWeather.weather_code)?.text
-    
-    
-                    
-
-
+    const weatherDescription =
+        currentWeather.weather_code == 0 && !currentWeather.is_day
+            ? 'Clear'
+            : getWMOInfo(currentWeather.weather_code)?.text;
 
     return (
         <Card className='col-span-4 lg:col-span-3 lg:row-span-2 text-center min-h-[600px] flex flex-col'>
@@ -62,9 +60,6 @@ const CurrentTemp = () => {
             <CardContent className='flex flex-col justify-center p-0'>
                 <Image
                     className=' mydropshadow self-center'
-                    // src={`./images/${
-                    //     getWMOInfo(currentWeather.weather_code)?.icon
-                    // }d@2x.png`}
                     src={iconSource}
                     alt='weather'
                     width={180}
