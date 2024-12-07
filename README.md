@@ -1,5 +1,5 @@
 # Another Weather App
-<img width="1980" alt="Screenshot of App" src="./public/app-screenshot .jpg">
+
 
 ## Overview
 This project was inspired by these 2 projects: [Meteo-nix](https://github.com/DariusLukasukas/nextjs-weather-app) and [Maclinz's app](https://github.com/Maclinz/weather-app). The goal was to address some of the [issues](./Tech_Summary.md) found in those projects and other weather apps.
@@ -10,7 +10,9 @@ This project was inspired by these 2 projects: [Meteo-nix](https://github.com/Da
 - Forecasts: hourly for a given day and daily for 7 days
 - The map has overlays for temperature, precipitation, wind and clouds (Please zoom out to see the layers).
 
-additional info can be found in the 
+additional info can be found in the [summary](./Tech_Summary.md)
+
+<img width="1000" alt="Screenshot of App" src="./public/app-screenshot .jpg">
 
 ## Specs
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app). It was configured with the following:
