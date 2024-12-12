@@ -27,8 +27,22 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 Note: *Due to using [React 19RC](https://ui.shadcn.com/docs/react-19) you may have issues deploying using npm (at the time of this writing). If you're using npm, you can install shadcn/ui dependencies with a flag. The shadcn CLI will prompt you to select a flag when you run it. No flags required for pnpm, bun, or yarn.*
 
 ## Getting Started
+There is an assumption that you have node and some package manager already installed on you machine. If not, google how to run a nextJS app on my machine.
 
-First, run the development server:
+
+First, install the app if you have not run it before:
+```bash
+yarn install
+# or
+pnpm install
+# or
+bun install
+# or
+npm install
+# or
+```
+
+Once the installation is complated, execute one of the commands below to start the development server:
 
 ```bash
 yarn dev
@@ -41,6 +55,6 @@ npm run dev
 # or
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the app.
 
 
