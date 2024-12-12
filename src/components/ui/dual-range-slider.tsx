@@ -27,7 +27,7 @@ const DualRangeSlider = React.forwardRef<
                 className
             )}
             {...props}>
-            <SliderPrimitive.Track className='relative h-2 w-full grow overflow-hidden  bg-secondary'>
+            <SliderPrimitive.Track className='relative h-2 w-full grow overflow-hidden rounded-full bg-secondary'>
                 <SliderPrimitive.Range className='absolute h-full temperature' />
             </SliderPrimitive.Track>
             {initialValue.map((value, index) => (

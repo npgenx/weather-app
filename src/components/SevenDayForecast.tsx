@@ -43,10 +43,10 @@ const DayForecast = ({
             </p>
 
             <div className='flex-1 flex items-center justify-between gap-4 pt-5'>
-                <p className='font-bold'>{limits[0]}°F</p>
+                <p className='font-bold'>{values[0]}°F</p>
 
                 <DualRangeSlider
-                    label={value => <span>{value}°F</span>}
+                    // label={value => <span>{value}°F</span>}
                     value={values}
                     disabled
                     className={cn('w-[60%]')}
@@ -54,7 +54,7 @@ const DayForecast = ({
                     max={limits[1]}
                     step={1}
                 />
-                <p className='font-bold'>{limits[1]}°F</p>
+                <p className='font-bold'>{values[1]}°F</p>
             </div>
         </div>
     );
