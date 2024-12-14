@@ -34,7 +34,9 @@ const Header = () => {
                 <Button variant='outline' size='icon'>
                     <a
                         href='https://github.com/npgenx/weather-app'
-                        target='blank'>
+                        target='blank'
+                        title='Github Source code'
+                    >
                         <Github />
                     </a>
                 </Button>
