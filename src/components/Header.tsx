@@ -11,11 +11,19 @@ import {Button} from '@/components/ui/button';
 const Header = () => {
     const {city} = useWeatherContext();
     const getLocationLabel = (city: CityInfoProps) => {
-        const {name, admin1, country} = city;
+        const { name, admin1, country } = city;
+        let label;
+        
+        if (name == "Your Location") {label = name;}
+        else {
+            label = `${name} ${
+                admin1 && admin1 != country && admin1 != name
+                    ? `, ${admin1}`
+                    : ''
+            }  (${country})`;
+        }
 
-        const label = `${name} ${
-            admin1 && admin1 != country && admin1 != name ? `, ${admin1}` : ''
-        }  (${country})`;
+       
         return label.trim();
     };
 

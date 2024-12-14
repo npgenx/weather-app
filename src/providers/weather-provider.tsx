@@ -20,6 +20,7 @@ import {
 import {getUVInfo, getWeatherInfo} from '@/actions';
 import {IAPCurrent} from '../shared.types';
 
+
 export interface WeatherContext {
     city: CityInfoProps;
     currentWeather?: ICurrentWeather;
@@ -34,7 +35,11 @@ export type WeatherContextUpdate = {
 const WeatherContext = createContext<WeatherContext | null>(null);
 const WeatherContextUpdate = createContext<WeatherContextUpdate | null>(null);
 
-const initialCity = {
+
+
+
+
+let initialCity = {
     name: 'Los Angeles',
     admin1: 'California',
     country: 'US',
@@ -63,6 +68,49 @@ export const WeatherContextProvider = ({children}: contextProps) => {
         if (dataw) setWeather(dataw);
         if (datau) setRawUVData(datau);
     };
+
+    useEffect(() => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(success, error);
+        } else {
+            console.log('Geolocation not supported');
+        }
+
+type positionProps ={
+    "accuracy": number,
+    "latitude": number,
+    "longitude": number,
+    "altitude"?: number,
+    "altitudeAccuracy"?: number,
+    "heading"?: string,
+    "speed"?: string
+}
+
+type geoData = {
+    "timestamp": number,
+    "coords": positionProps
+}
+
+        function success(position: geoData): void {
+            const latitude = position?.coords?.latitude;
+            const longitude = position?.coords?.longitude;
+            console.log(`teh Position:`, position);
+            console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+             initialCity = {
+                name: 'Your Location',
+                admin1: '',
+                country: '',
+                latitude,
+                longitude,
+                tzone: '',
+            };
+            setCity(initialCity);
+        }
+
+        function error() {
+            console.log('Unable to retrieve your location');
+        }
+    }, []);
 
     useEffect(() => {
         getRawLocationData(city);
