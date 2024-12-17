@@ -38,7 +38,7 @@ const HumidityInfo = () => {
                 </p>
             </CardContent>
             <CardFooter>
-                <em>{'Todo: heat index'}</em>
+                {/* <em>{'Todo: heat index'}</em> */}
             </CardFooter>
         </Card>
     );
