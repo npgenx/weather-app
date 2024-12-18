@@ -63,7 +63,7 @@ const DayForecast = ({
 const SevenDayForecast = () => {
     const {dailyWeather} = useWeatherContext();
 
-    if (!dailyWeather)
+    if (dailyWeather.length < 1)
         return (
             <Card className='col-span-3 row-start-3 row-span-3   flex items-center justify-center min-h-[300px]'>
                 <span className='loader' />

@@ -32,12 +32,22 @@ const FlyToActiveCity = ({activeCityCords = initialCoords}) => {
 
 const WeatherMap = () => {
     const {
-        city: { latitude, longitude } } = useWeatherContext();
+        city: {latitude, longitude},
+        currentWeather,
+    } = useWeatherContext();
 
     const activeCityCords: {lat:number, lon:number} = {
         lat: latitude,
         lon: longitude,
     };
+
+
+        if (!currentWeather)
+            return (
+                <Card className='col-span-4 lg:col-span-8 lg:row-span-3 min-h-[600px]'>
+                    <span className='loader' />
+                </Card>
+            );
 
     return (
         <Card className='col-span-4 lg:col-span-8 lg:row-span-3 min-h-[600px]'>
