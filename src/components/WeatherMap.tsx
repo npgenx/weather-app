@@ -6,7 +6,7 @@ import {useEffect} from 'react';
 import {MapContainer, TileLayer, useMap, LayersControl} from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
-import { useWeatherContext } from '@/providers/weather-provider';
+import {useWeatherContext} from '@/providers/weather-provider';
 
 const initialCoords = {lat: 34.0522, lon: -118.2437};
 
@@ -36,18 +36,17 @@ const WeatherMap = () => {
         currentWeather,
     } = useWeatherContext();
 
-    const activeCityCords: {lat:number, lon:number} = {
+    const activeCityCords: {lat: number; lon: number} = {
         lat: latitude,
         lon: longitude,
     };
 
-
-        if (!currentWeather)
-            return (
-                <Card className='col-span-4 lg:col-span-8 lg:row-span-3 min-h-[600px]'>
-                    <span className='loader' />
-                </Card>
-            );
+    if (!currentWeather)
+        return (
+            <Card className='col-span-4 lg:col-span-8 lg:row-span-3 min-h-[600px]'>
+                <span className='loader' />
+            </Card>
+        );
 
     return (
         <Card className='col-span-4 lg:col-span-8 lg:row-span-3 min-h-[600px]'>
