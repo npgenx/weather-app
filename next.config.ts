@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
     eslint: {
         ignoreDuringBuilds: true,
     },
-    basePath: isProd ? '/your-repository-name' : ''
+    basePath: isProd ? '/weather-app' : ''
 };
 
 export default nextConfig;

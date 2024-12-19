@@ -15,7 +15,7 @@ import {useWeatherContext} from '@/providers/weather-provider';
 const WeatherWindow = () => {
     const { city } = useWeatherContext();
 
-    if(city.name != '') return <div>Pick a city</div>
+    if(!city?.name) return <div>Pick a city</div>
     
     return (
         <main className=' grid grid-cols-4 lg:grid-cols-5 xl:grid-cols-11 gap-4 p-4'>

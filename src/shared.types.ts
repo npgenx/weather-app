@@ -1,6 +1,6 @@
 export type CityInfoProps = {
-    name?: string;
-    country: string;
+    name: string | null;
+    country?: string;
     latitude: number;
     longitude: number;
     tzone: string;

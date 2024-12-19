@@ -1,15 +1,69 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import {ModeToggle} from '@/components/ModeToggle';
 import {Github, NavigationIcon} from 'lucide-react';
 import {SeachBox} from '@/components/SearchBox';
-import {useWeatherContext} from '@/providers/weather-provider';
+import {useWeatherContext, useWeatherContextUpdate} from '@/providers/weather-provider';
 import {CityInfoProps} from '@/shared.types';
 import {Button} from '@/components/ui/button';
 
 const Header = () => {
     const { city } = useWeatherContext();
+    const { setCity } = useWeatherContextUpdate();
+
+
+    const getInitialCity = (info: CityInfoProps) => {
+        const {latitude, longitude} = info;
+        const tzone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        const name = 'Your current Location';
+
+        const test = {
+            name,
+            tzone,
+            latitude,
+            longitude,
+        };
+
+        if(latitude) setCity(test)
+        console.log(' ++++_++_+_+_+_+_+_the day is over: ', test);
+    };
+
+
+    useEffect(() => {
+
+        if (!navigator.geolocation) { 
+            console.log(`|+|+|+ No geolocation features`);
+            return
+        }
+
+       
+
+        navigator.permissions.query({name: 'geolocation'}).then(result => {
+            if (result.state === 'granted') {
+                navigator.geolocation.getCurrentPosition(
+                    position => {
+                       getInitialCity(position?.coords)
+                    }
+                );
+            
+            } else if (result.state === 'prompt') {
+                console.log(
+                    'Please allow location access or enter a city in the search bar'
+                );
+            } else {
+                console.log("Search for a location to get it's weather");
+            }
+        });
+
+        navigator.geolocation.getCurrentPosition( res => getInitialCity( res), (err) => {console.log(`the error is :`, err)} )
+      
+    
+    }, [])
+    
+
+
+
     
 
     const getLocationLabel = (city: CityInfoProps) => {

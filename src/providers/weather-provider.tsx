@@ -35,12 +35,12 @@ const WeatherContext = createContext<WeatherContext | null>(null);
 const WeatherContextUpdate = createContext<WeatherContextUpdate | null>(null);
 
 const initialCity = {
-    name: '',
+    name: null,
     admin1: '',
-    country: 'US',
-    latitude: 34.0536909,
-    longitude: -118.242766,
-    tzone: 'America/Los_Angeles',
+    country: '',
+    latitude: 0,
+    longitude: 0,
+    tzone: '',
 };
 
 export type contextProps = {
@@ -66,7 +66,7 @@ export const WeatherContextProvider = ({children}: contextProps) => {
 
 
     useEffect(() => {
-        if (city) {getRawLocationData(city);}
+        if (city.name) {getRawLocationData(city);}
     }, [city]);
 
     let currentWeather;
