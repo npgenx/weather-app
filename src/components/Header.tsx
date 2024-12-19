@@ -81,7 +81,7 @@ const Header = () => {
             <div className='flex items-center gap-4'>
                 <ModeToggle />
 
-                <Button variant='outline' size='icon'>
+                <Button variant='outline' size="lg" aria-label='Go to sourcecode on Github'>
                     <a
                         href='https://github.com/npgenx/weather-app'
                         target='blank'

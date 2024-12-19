@@ -70,6 +70,7 @@ export const SeachBox = () => {
                 <Button
                     variant='outline'
                     role='combobox'
+                    aria-label='Search for a location'
                     aria-expanded={open}
                     className='w-fit min-w-[30rem] justify-between'>
                     {selected
