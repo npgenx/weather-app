@@ -182,3 +182,14 @@ export interface IAPCurrentunits {
     uv_index: string;
     uv_index_clear_sky: string;
 }
+
+
+export interface IGeoCoordinates {
+    latitude: number;
+    longitude: number;
+    altitude?: string;
+    speed?: string;
+    heading?: string;
+    accuracy?: number;
+    altitude_accuracy?: number;
+}

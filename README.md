@@ -12,7 +12,7 @@ This project was inspired by these 2 projects: [Meteo-nix](https://github.com/Da
 
 additional info can be found in the [summary](./Tech_Summary.md)
 
-<img width="1000" alt="Screenshot of App" src="./public/app-screenshot .jpg">
+<img width="1000" alt="Screenshot of App" src="./public/app-screenshot.jpg">
 
 ## Specs
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app). It was configured with the following:

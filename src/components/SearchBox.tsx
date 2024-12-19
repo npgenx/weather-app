@@ -77,14 +77,14 @@ export const SeachBox = () => {
                               option =>
                                   JSON.stringify(option.value) === selected
                           )?.label
-                        : 'Pick Location...'}
+                        : 'Search for a location...'}
                     <ChevronsUpDown className='opacity-50' />
                 </Button>
             </PopoverTrigger>
             <PopoverContent className='w-fit min-w-[30rem] p-0 '>
                 <Command shouldFilter={false}>
                     <CommandInput
-                        placeholder='Search Location...'
+                        placeholder='Start typing a location...'
                         className='h-9'
                         onValueChange={value => {
                             debouncedHandleInput(value);
