@@ -9,8 +9,13 @@ import {CityInfoProps} from '@/shared.types';
 import {Button} from '@/components/ui/button';
 
 const Header = () => {
-    const {city} = useWeatherContext();
+    const { city } = useWeatherContext();
+    
+
     const getLocationLabel = (city: CityInfoProps) => {
+
+        if (!city.name){return "Pick your location"}
+
         const {name, admin1, country} = city;
 
         const label = `${name} ${
@@ -18,6 +23,7 @@ const Header = () => {
         }  (${country})`;
         return label.trim();
     };
+
 
     return (
         <header className='flex justify-between py-4 gap-10 items-center h-auto sticky top-0  bg-background z-50'>
