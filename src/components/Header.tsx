@@ -23,7 +23,7 @@ const Header = () => {
 
         const geoOptions = {
             enableHighAccuracy: false,
-            timeout: 6000,
+            timeout: 5000,
             // maximumAge: 0,
         };
         const getInitialCity = (info: {
@@ -34,15 +34,15 @@ const Header = () => {
             const tzone = Intl.DateTimeFormat().resolvedOptions().timeZone;
             const name = 'Your current location';
 
-            const test = {
+            const initialLocationData = {
                 name,
                 tzone,
                 latitude,
                 longitude,
             };
 
-            if (latitude) setCity(test);
-            console.log('set the browser location: ', test);
+            if (latitude) setCity(initialLocationData);
+            console.log('set the browser location: ', initialLocationData);
         };
 
         navigator.geolocation.getCurrentPosition(
@@ -70,7 +70,7 @@ const Header = () => {
     };
 
     return (
-        <header className='flex justify-between py-4 gap-10 items-center h-auto sticky top-0  bg-background z-50'>
+        <header className='flex flex-wrapjustify-between py-4 gap-10 items-center h-auto sticky top-0  bg-background z-50'>
             <div className='location pl-5 flex font-bold '>
                 <NavigationIcon size={15} className='absolute -ml-5 mt-1' />
                 {getLocationLabel(city)}
@@ -81,7 +81,7 @@ const Header = () => {
             <div className='flex items-center gap-4'>
                 <ModeToggle />
 
-                <Button variant='outline' size="lg" aria-label='Go to sourcecode on Github'>
+                <Button variant='outline' size="lg" aria-label='Go to source code on Github'>
                     <a
                         href='https://github.com/npgenx/weather-app'
                         target='blank'

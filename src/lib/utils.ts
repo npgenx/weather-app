@@ -1,5 +1,5 @@
-import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
+import {clsx, type ClassValue} from 'clsx';
+import {twMerge} from 'tailwind-merge';
 
 import dayjs from 'dayjs';
 import timezone from 'dayjs/plugin/timezone';
@@ -8,7 +8,7 @@ dayjs.extend(utc);
 dayjs.extend(timezone);
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+    return twMerge(clsx(inputs));
 }
 
 export const debounce = <T extends (...args: never[]) => unknown>(
@@ -26,11 +26,9 @@ export const debounce = <T extends (...args: never[]) => unknown>(
     } as T;
 };
 
-
-
-export const getLocalTime = (time: string): string => { 
+export const getLocalTime = (time: string): string => {
     return dayjs(time).format('h:mm a');
-}
+};
 
 export const getLocalDay = (time: string): string => {
     return dayjs(time).format('dddd');
