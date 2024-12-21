@@ -5,4 +5,3 @@
  - This app also displays the time in the location's zone other apps where showing incorrect times. ADditionally,  it gives the proper weather description and icons based on whether the sampled time is before or after the local sunrise and or sunset.
  - The Air Quality info has been updated to show particulate matter info (this will tie in witha a future enhancment of weather alerts)
  - The map has weather overlays for the following: temperature, precipitation, clouds and winds.  Due to the resolution of the current overlays, one has to zoom out to see the effective changes respresented by the overlays.
-- 
