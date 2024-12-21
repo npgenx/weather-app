@@ -63,13 +63,13 @@ const DayForecast = ({
 const SevenDayForecast = () => {
     const {dailyWeather} = useWeatherContext();
 
-    if (!dailyWeather)
+    if (!dailyWeather || dailyWeather.length === 0) {
         return (
             <Card className='col-span-3 row-start-3 row-span-3   flex items-center justify-center min-h-[300px]'>
                 <span className='loader' />
             </Card>
         );
-    
+    }
     const mina = Math.min(...dailyWeather.map(day => Number(day.temperature_2m_min)));
     const maxa = Math.max(...dailyWeather.map(day => Number(day.temperature_2m_max)));
     const min = Math.floor(mina);

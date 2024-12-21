@@ -43,8 +43,8 @@ const WeatherMap = () => {
 
     if (!currentWeather)
         return (
-            <Card className='col-span-4 lg:col-span-8 lg:row-span-3 min-h-[600px]'>
-                <span className='loader' />
+            <Card className='flex col-span-4 lg:col-span-8 lg:row-span-3 min-h-[600px]'>
+                <span className='loader relative self-center mx-auto' />
             </Card>
         );
 

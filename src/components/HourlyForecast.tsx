@@ -77,7 +77,7 @@ const HourlyForecast = () => {
                                 className='pl-1 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/3 p-0 m-0'>
                                 <div className='p-1'>
                                     <Card>
-                                        <CardContent className='flex flex-col  items-center content-between justify-between h-44 pt-5'>
+                                        <CardContent className='flex flex-col  items-center content-between justify-between h-48 pt-5'>
                                             <span className='text-sm'>
                                                 {getLocalTime(hour.time)}
                                             </span>
