@@ -26,7 +26,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 - [shadcn UI](https://ui.shadcn.com/docs) with  [next-themes](https://ui.shadcn.com/docs/dark-mode/next) for dark mode 
 - Configured for [VSCode debugging](https://nextjs.org/docs/app/building-your-application/configuring/debugging)
 
-Note: *Due to using [React 19RC](https://ui.shadcn.com/docs/react-19) you may have issues deploying using npm (at the time of this writing). If you're using npm, you can install shadcn/ui dependencies with a flag. The shadcn CLI will prompt you to select a flag when you run it. No flags required for pnpm, bun, or yarn.*
+~~Note: *Due to using [React 19RC](https://ui.shadcn.com/docs/react-19) you may have issues deploying using npm (at the time of this writing). If you're using npm, you can install shadcn/ui dependencies with a flag. The shadcn CLI will prompt you to select a flag when you run it. No flags required for pnpm, bun, or yarn.*~~
 
 ## Getting Started
 There is an assumption that you have node and some package manager already installed on you machine. If not, google how to run a nextJS app on my machine.
